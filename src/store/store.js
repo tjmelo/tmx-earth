@@ -2,7 +2,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 
 // Require createSlice from countryReducer...
-import countryReducer from '../feature/county/countrySlice';
+import countryReducer from '../feature/country/countrySlice';
 
 // Export method configureStore with object reducer...
 export default configureStore({

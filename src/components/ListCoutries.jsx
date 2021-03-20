@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { apiListCoutries } from '../api/api';
 import { useDispatch } from 'react-redux';
-import { update } from '../feature/county/countrySlice';
+import { update } from '../feature/country/countrySlice';
 
 export const ListCoutries = props => {
 
