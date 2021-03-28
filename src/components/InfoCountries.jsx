@@ -11,6 +11,8 @@ export const InfoCountries = props => {
 
     useEffect(() => {    
         // Export all details by countries...
+        setInfo(<div className="alert alert-primary">Getting data...</div>)
+
         if(country.length === 0 || country === 'Select a country'){
             setInfo(<div className="alert alert-warning">Select a country!</div>)
         }else{
