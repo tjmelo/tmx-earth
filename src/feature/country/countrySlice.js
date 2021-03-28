@@ -5,7 +5,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const countrySlice = createSlice({
     name: 'country',
     initialState: {
-        country: 'brazil',
+        country: [],
     },
     reducers: {
         update: (state, action) => {
