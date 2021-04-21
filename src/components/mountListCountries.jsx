@@ -1,6 +1,24 @@
 import style from './components.module.css';
 
 export const MountListCountries = ({data}) => {
+       
+    const parseNumber = element => {
+        let number = element.toString().split(''),
+            qtdeDivisor = Math.floor(number.length / 3),
+            arr = [];
+
+        for(let i=0; i<qtdeDivisor;i++){
+            let ind = number.length - (3*(i+1))-1;
+            if(ind !== -1) arr.push(ind)
+        }
+        
+        for(let i=0; i<arr.length; i++) number.splice(arr[i]+1, 0, '.')
+        return number.join('');
+    }
+
+    let population = parseNumber(data.population),
+        area = parseNumber(data.area);
+
     return (
         <div className="row">
                                             
@@ -79,17 +97,17 @@ export const MountListCountries = ({data}) => {
 
             <div className="col-xs-12 col-sm-6 col-md-3 col-lg-3 mb-3">    
                 <span className="text-secondary">Poulation: </span> <br/>
-                <strong className="text-primary">{data.population || '-----'}</strong>
+                <strong className="text-primary">{population || '-----'}</strong>
             </div>
 
             <div className={`col-xs-12 col-sm-6 col-md-3 col-lg-3 mb-3`}>
                 <span className="text-secondary">Area: </span> <br/>
-                <strong className="text-primary">{data.area || '-----'}</strong> <br/>
+                <strong className="text-primary">{area || '-----'}</strong> <br/>
             </div>
 
             <div className={`col-xs-12 col-sm-6 col-md-2 col-lg-2 mb-3`}>
                 <span className="text-secondary">Domain: </span> <br/>
-                <strong className="text-primary">{data.topLevdataDomain || '-----'}</strong> <br/>
+                <strong className="text-primary">{data.topLevelDomain || '-----'}</strong> <br/>
             </div>
 
         </div>

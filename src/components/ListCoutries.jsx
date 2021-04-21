@@ -6,11 +6,11 @@ import { update } from '../feature/country/countrySlice';
 export const ListCoutries = props => {
 
     const dispatch = useDispatch();
-
     const [data, setData] = useState([]);
+    
     useEffect(() => {
        apiListCoutries().then(res => setData(res.data));
-    },[data])
+    }, [])
     
     const selectCountry = e => {
         dispatch(update(e.target.value));

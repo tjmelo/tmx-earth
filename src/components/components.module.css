@@ -11,6 +11,9 @@ sup{
     align-items: center;
     justify-content: center;
 }
+.flag{
+    flex-flow: row wrap;
+}
 .flag figure{
     overflow: hidden;
     width: 85px;
@@ -30,4 +33,12 @@ sup{
 }
 .borders{
     margin-right: .7em;
+}
+
+@media(max-width: 400px){
+    .flag figure{
+        width: 100%;
+        height: auto;
+    }
+    .name{ margin-left: 0; }
 }
