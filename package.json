@@ -1,7 +1,7 @@
 {
   "name": "tmx-earth",
   "version": "0.1.0",
-  "private": true,
+  "homepage": "https://tjmelo.github.io/tmx-earth",
   "dependencies": {
     "@reduxjs/toolkit": "^1.5.0",
     "@testing-library/jest-dom": "^5.11.9",
