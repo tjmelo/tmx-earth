@@ -3,6 +3,7 @@
 ![release](https://img.shields.io/github/release-date/tjmelo/tmx-earth?label=Release)
 
 Simple project to search for information in any coutry.
+
 Look for a certain country in the list and see all its information on screen.
 
 Preview project here:
