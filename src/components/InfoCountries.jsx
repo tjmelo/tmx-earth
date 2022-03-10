@@ -16,9 +16,9 @@ export const InfoCountries = props => {
         if(country.length === 0 || country === 'Select a country'){
             setInfo(<div className="alert alert-warning">Select a country!</div>)
         }else{
-            const data = axios.get(`https://restcountries.eu/rest/v2/name/${country}?fullText=true`)
-            data.then(d => {
-                setInfo(d.data.map((el, idx) => <MountListCountries data={el} key={idx}/> ))
+            const data = axios.get(`https://restcountries.com/v3.1/name/${country}?fullText=true`)
+            data.then(({data}) => {
+                setInfo(data.map((el, idx) => <MountListCountries data={el} key={idx}/> ))
             }).catch(e => console.error(e));
         }
     }, [country])

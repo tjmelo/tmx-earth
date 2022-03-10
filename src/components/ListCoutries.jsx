@@ -8,7 +8,7 @@ export const ListCoutries = props => {
   const [data, setData] = useState([])
 
   useEffect(() => {
-    apiListCoutries().then(res => setData(res.data))
+    apiListCoutries().then(({ data }) => setData(data))
   }, [])
 
   const selectCountry = e => {
@@ -24,8 +24,8 @@ export const ListCoutries = props => {
         <option value="Select a country">
           Select a country
         </option>
-        {data.map((list, idx) => (
-          <option key={idx}>{list.name}</option>
+        {data.map(({name}, idx) => (
+          <option key={idx}>{name.common}</option>
         ))}
       </select>
     </div>
