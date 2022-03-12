@@ -1,7 +1,6 @@
 import style from "./components.module.css"
 
 export const MountListCountries = ({ data }) => {
-  console.log(data.flags.svg)
 
   const parseNumber = element => {
     let number = element.toString().split(""),
