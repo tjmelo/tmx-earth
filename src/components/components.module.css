@@ -45,5 +45,8 @@ sup {
     width: 100%;
     height: auto;
   }
-  .name { margin-left: 0; }
+
+  .name {
+    margin-left: 0;
+  }
 }
