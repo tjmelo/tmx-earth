@@ -25,7 +25,7 @@ export const InfoCountries = () => {
     }, [country])
 
     return(
-        <section className="container my-5">
+        <section className="container">
             { info }
         </section>
     )

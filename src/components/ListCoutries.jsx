@@ -1,14 +1,18 @@
 import React, { useEffect, useState } from 'react'
-import { apiListCoutries } from '../api/api'
+import { apiListCoutries } from '../model/api'
 import { useDispatch } from 'react-redux'
 import { update } from '../feature/country/countrySlice'
+import Loading from './Load'
 
 export const ListCoutries = props => {
   const dispatch = useDispatch()
   const [data, setData] = useState([])
 
   useEffect(() => {
-    apiListCoutries().then(({ data }) => setData(data))
+    apiListCoutries().then(({ data, status }) => 
+      status !== 200 
+      ? setData(false) 
+      : setData(data))
   }, [])
 
   const selectCountry = e => {
@@ -22,12 +26,16 @@ export const ListCoutries = props => {
         onChange={selectCountry}
       >
         <option value="Select a country">
-          Select a country
+          {!data ? '' : 'Select a country' }
         </option>
-        {data.map(({name}, idx) => (
+        {data && data.map(({name}, idx) => (
           <option key={idx}>{name.common}</option>
         ))}
       </select>
+      {!data 
+        ? <Loading type='danger'>Data not found, notify the administrator!</Loading> 
+        : ''
+      }
     </div>
   )
 }

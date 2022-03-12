@@ -6,4 +6,7 @@ export const api = axios.create({
 })
 
 // Export exclusive list of the name coutries...
-export const apiListCoutries = e => api.get('https://restcountries.com/v3.1/all?fields=name') 
+export const apiListCoutries = () => 
+    api
+    .get('https://restcountries.com/v3.1/all?fields=name')
+    .catch(error => error.response)
