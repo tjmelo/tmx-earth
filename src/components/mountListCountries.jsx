@@ -21,7 +21,7 @@ export const MountListCountries = ({ data }) => {
     area = parseNumber(data.area)
 
   return (
-    <div className="row">
+    <div className="row my-5">
       <div
         className={`col-xs-12 d-flex mb-2 ${style.flag}`}
       >
