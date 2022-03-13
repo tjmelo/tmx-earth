@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
 
-import { MountListCountries } from '../mountListCountries';
+import MountListCountries from '../Mount';
 import Loading from '../Load';
 
 export const InfoCountries = () => {
