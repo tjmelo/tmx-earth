@@ -1,7 +1,8 @@
-import style from "../components.module.css"
 import { parseNumber } from '../../utils'
 import { SectionList } from './section-list';
 import { useEffect, useState } from "react";
+
+import style from "../../styles/components.module.scss"
 
 interface CMountListCountries {
   data: any
