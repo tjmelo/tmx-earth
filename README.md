@@ -1,26 +1,40 @@
-## TMX Earth
+# TMX Earth
+
+> Simple project to search for complete information in any country.
 
 ![release](https://img.shields.io/github/release-date/tjmelo/tmx-earth?label=Release)
 
-Simple project to search for information in any coutry.
 
-Look for a certain country in the list and see all its information on screen.
+Look for a certain country in the select list and see all its information on screen.
+
+## Demo projetc
+
+![Screen](https://github.com/tjmelo/tmx-earth/blob/main/public/select-country1.png)
+
+
+![Screen](https://github.com/tjmelo/tmx-earth/blob/main/public/select-country2.png)
+
+
 
 Preview project here:
 :earth_americas: [TMX Earth](https://tjmelo.github.io/tmx-earth/)
 
-**Contribution Instructions**
+<hr>
 
-Download and install project
+## Instructions for contribution
 
-```javascript
-$ npm install
-```
-
-Initialize project
+Download and install project's packages
 
 ```javascript
-$ npm start
+npm install
 ```
+
+Basic Initialize project
+
+```javascript
+npm start
+```
+
+For more instructions about developer envoirment, look at: [package.json](https://github.com/tjmelo/tmx-earth/blob/main/package.json)
 
 :fire: Have a code fun!
