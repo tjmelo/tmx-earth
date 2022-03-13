@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { SetStateAction, useEffect, useState } from 'react';
+import { RootStateOrAny, useSelector } from 'react-redux';
 import axios from 'axios';
 
 import MountListCountries from '../Mount';
@@ -7,8 +7,8 @@ import Loading from '../Load';
 
 export const InfoCountries = () => {
 
-    const country = useSelector(state => state.country.country);
-    const [info, setInfo] = useState([]);
+    const country = useSelector((state: RootStateOrAny) => state.country.country);
+    const [info, setInfo] = useState<[]|SetStateAction<any>>([]);
 
     useEffect(() => {    
         // Export all details by countries...
@@ -19,7 +19,7 @@ export const InfoCountries = () => {
         }else{
             const data = axios.get(`https://restcountries.com/v3.1/name/${country}?fullText=true`)
             data.then(({data}) => {
-                setInfo(data.map((el, idx) => <MountListCountries data={el} key={idx}/> ))
+                setInfo(data.map((el:{}, idx: number) => <MountListCountries data={el} key={idx}/> ))
             }).catch(e => console.error(e));
         }
     }, [country])
