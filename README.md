@@ -35,6 +35,6 @@ Basic Initialize project
 npm start
 ```
 
-For more instructions about developer envoirment, look at: [package.json](https://github.com/tjmelo/tmx-earth/blob/main/package.json)
+For more instructions about developer environment, look at: [package.json](https://github.com/tjmelo/tmx-earth/blob/main/package.json)
 
 :fire: Have a code fun!
