@@ -5,7 +5,7 @@ import store from "./store/store"
 
 import { ListCoutries } from "./components/ListCoutries"
 import Loading from "./components/Load"
-import "./global.css"
+import "./styles/global.scss"
 
 const InfoCountries = lazy(() => import("./components/Countries"))
 

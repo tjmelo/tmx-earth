@@ -14,21 +14,19 @@ sup {
 
 .flag {
   flex-flow: row wrap;
-}
-
-.flag figure {
-  overflow: hidden;
-  width: 85px;
-  height: 65px;
-  border-radius: 7px;
-  box-shadow: 1px solid rgb(255, 255, 255);
-  border: 1px solid #fff;
-}
-
-.flag figure img {
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
+  figure {
+    overflow: hidden;
+    width: 85px;
+    height: 65px;
+    border-radius: 7px;
+    box-shadow: 1px solid rgb(255, 255, 255);
+    border: 1px solid #fff;
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
 }
 
 .name {
@@ -41,9 +39,11 @@ sup {
 }
 
 @media (max-width: 400px) {
-  .flag figure {
-    width: 100%;
-    height: auto;
+  .flag{
+    figure {
+      width: 100%;
+      height: auto;
+    }
   }
 
   .name {
