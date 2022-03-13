@@ -3,6 +3,7 @@ import { SectionList } from './section-list';
 import { useEffect, useState } from "react";
 
 import style from "../../styles/components.module.scss"
+
 interface CMountListCountries {
   data: any
 }
