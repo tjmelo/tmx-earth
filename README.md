@@ -21,7 +21,7 @@ Preview project here:
 
 <hr>
 
-## Instructions form contribution
+## Instructions for contribution
 
 Download and install project's packages
 
