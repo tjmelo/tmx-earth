@@ -7,7 +7,7 @@
 
 Look for a certain country in the select list and see all its information on screen.
 
-## Demo projetc
+## Demo project
 
 ![Screen](https://github.com/tjmelo/tmx-earth/blob/main/public/select-country1.png)
 
