@@ -4,18 +4,18 @@ import { useDispatch } from 'react-redux'
 import { update } from '../feature/country/countrySlice'
 import Loading from './Load'
 
-export const ListCoutries = props => {
+export const ListCoutries = () => {
   const dispatch = useDispatch()
-  const [data, setData] = useState([])
+  const [data, setData] = useState<[]>([])
 
   useEffect(() => {
     apiListCoutries().then(({ data, status }) => 
       status !== 200 
-      ? setData(false) 
+      ? setData([]) 
       : setData(data))
-  }, [])
+  }, [data])
 
-  const selectCountry = e => {
+  const selectCountry = (e: { target: { value: any } }) => {
     dispatch(update(e.target.value))
   }
 
@@ -28,7 +28,7 @@ export const ListCoutries = props => {
         <option value="Select a country">
           {!data ? '' : 'Select a country' }
         </option>
-        {data && data.map(({name}, idx) => (
+        {data && data.map(({name}: any, idx: number) => (
           <option key={idx}>{name.common}</option>
         ))}
       </select>
