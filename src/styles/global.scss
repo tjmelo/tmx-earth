@@ -5,7 +5,7 @@
 body,
 input,
 select {
-  font-family: 'Noto Sans JP', sans-serif;
+  font-family: "Noto Sans JP", sans-serif;
   color: var(--text);
 }
 
@@ -16,10 +16,10 @@ span {
 figure {
   width: 100%;
   box-shadow: 0 1px 7px rgba(0, 0, 0, 0.5);
-}
-
-figure img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
+  
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
 }
