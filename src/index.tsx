@@ -3,7 +3,7 @@ import ReactDOM from "react-dom"
 import { Provider } from "react-redux"
 import store from "./store/store"
 
-import { ListCoutries } from "./components/ListCoutries"
+import { ListCountries } from "./components/ListCountries"
 import Loading from "./components/Load"
 import "./styles/global.scss"
 
@@ -12,7 +12,7 @@ const InfoCountries = lazy(() => import("./components/Countries"))
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <ListCoutries />
+      <ListCountries />
       <Suspense 
         fallback={<Loading type="info">Loading app!</Loading>}>
         <InfoCountries />
