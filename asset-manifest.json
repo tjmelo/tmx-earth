@@ -1,24 +1,17 @@
 {
   "files": {
-    "main.css": "/tmx-earth/static/css/main.e9a635a2.chunk.css",
-    "main.js": "/tmx-earth/static/js/main.5ed4b26b.chunk.js",
-    "main.js.map": "/tmx-earth/static/js/main.5ed4b26b.chunk.js.map",
-    "runtime-main.js": "/tmx-earth/static/js/runtime-main.d816461d.js",
-    "runtime-main.js.map": "/tmx-earth/static/js/runtime-main.d816461d.js.map",
-    "static/js/2.c4a33b90.chunk.js": "/tmx-earth/static/js/2.c4a33b90.chunk.js",
-    "static/js/2.c4a33b90.chunk.js.map": "/tmx-earth/static/js/2.c4a33b90.chunk.js.map",
-    "static/css/3.ef6e91ca.chunk.css": "/tmx-earth/static/css/3.ef6e91ca.chunk.css",
-    "static/js/3.ea2b093e.chunk.js": "/tmx-earth/static/js/3.ea2b093e.chunk.js",
-    "static/js/3.ea2b093e.chunk.js.map": "/tmx-earth/static/js/3.ea2b093e.chunk.js.map",
+    "main.css": "/tmx-earth/static/css/main.d9ec2a68.css",
+    "main.js": "/tmx-earth/static/js/main.1f3a69d4.js",
+    "static/css/618.f377affb.chunk.css": "/tmx-earth/static/css/618.f377affb.chunk.css",
+    "static/js/618.626eac2a.chunk.js": "/tmx-earth/static/js/618.626eac2a.chunk.js",
     "index.html": "/tmx-earth/index.html",
-    "static/css/3.ef6e91ca.chunk.css.map": "/tmx-earth/static/css/3.ef6e91ca.chunk.css.map",
-    "static/css/main.e9a635a2.chunk.css.map": "/tmx-earth/static/css/main.e9a635a2.chunk.css.map",
-    "static/js/2.c4a33b90.chunk.js.LICENSE.txt": "/tmx-earth/static/js/2.c4a33b90.chunk.js.LICENSE.txt"
+    "main.d9ec2a68.css.map": "/tmx-earth/static/css/main.d9ec2a68.css.map",
+    "main.1f3a69d4.js.map": "/tmx-earth/static/js/main.1f3a69d4.js.map",
+    "618.f377affb.chunk.css.map": "/tmx-earth/static/css/618.f377affb.chunk.css.map",
+    "618.626eac2a.chunk.js.map": "/tmx-earth/static/js/618.626eac2a.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/runtime-main.d816461d.js",
-    "static/js/2.c4a33b90.chunk.js",
-    "static/css/main.e9a635a2.chunk.css",
-    "static/js/main.5ed4b26b.chunk.js"
+    "static/css/main.d9ec2a68.css",
+    "static/js/main.1f3a69d4.js"
   ]
 }
