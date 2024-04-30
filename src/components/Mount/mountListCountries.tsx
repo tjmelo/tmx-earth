@@ -3,19 +3,16 @@ import { SectionList } from './section-list';
 import { useEffect, useState } from "react";
 
 import style from "../../styles/components.module.scss"
+import { IMountListCountries } from '../../interfaces';
 
-interface CMountListCountries {
-  data: any
-}
-
-export const MountListCountries:React.FC<CMountListCountries> = ({ data }) => {
+export const MountListCountries:React.FC<IMountListCountries> = ({ data }) => {
   
   const [nativeName, setNativeName] = useState<string>()
   const [currencies, setCurrencies] = useState<string>()
 
   useEffect(
     () => {
-      const getNative = (data: object): any => {
+      const getNative = (data: object) => {
         for( const native in data) return native
       }
       setNativeName(getNative(data.name.nativeName))

@@ -10,5 +10,6 @@ export const parseNumber = (element: number) => {
 
     for (let i = 0; i < arr.length; i++)
         number.splice(arr[i] + 1, 0, ".")
+    
     return number.join("")
 }
