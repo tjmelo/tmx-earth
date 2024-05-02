@@ -1,5 +1,5 @@
 import React, { lazy, Suspense } from "react"
-import ReactDOM from "react-dom"
+import { createRoot } from 'react-dom/client';
 import { Provider } from "react-redux"
 import store from "./store/store"
 
@@ -8,8 +8,9 @@ import Loading from "./components/Load"
 import "./styles/global.scss"
 
 const InfoCountries = lazy(() => import("./components/Countries"))
+const appRoot = createRoot(document.getElementById("root") as HTMLElement);
 
-ReactDOM.render(
+appRoot.render(
   <React.StrictMode>
     <Provider store={store}>
       <ListCountries />
@@ -18,6 +19,5 @@ ReactDOM.render(
         <InfoCountries />
       </Suspense>
     </Provider>
-  </React.StrictMode>,
-  document.getElementById("root")
+  </React.StrictMode>
 )

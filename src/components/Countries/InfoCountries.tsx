@@ -1,26 +1,34 @@
 import { SetStateAction, useEffect, useState } from 'react';
-import { RootStateOrAny, useSelector } from 'react-redux';
-import axios from 'axios';
+import { useSelector } from 'react-redux';
+import axios, { AxiosResponse } from 'axios';
 
 import MountListCountries from '../Mount';
 import Loading from '../Load';
 
+import { ICountry } from '../../interfaces';
+
 export const InfoCountries = () => {
 
-    const country = useSelector((state: RootStateOrAny) => state.country.country);
-    const [info, setInfo] = useState<[]|SetStateAction<any>>([]);
+    const country = useSelector((state: ICountry ) => state.country.country);
+    const [info, setInfo] = useState<[] | SetStateAction<any>>([]);
+
+    const getData = async (fetchData: Promise<AxiosResponse<any, any>>) => {
+        try {
+            const { data } = await fetchData;
+            setInfo(data.map((el:{cca2: string}) => <MountListCountries data={el} key={el.cca2}/> ))
+        } catch (e) {
+            console.error(e)
+        }
+    }
 
     useEffect(() => {    
-        // Export all details by countries...
         setInfo(<div className="alert alert-primary">Getting data...</div>)
 
-        if(country.length === 0 || country === 'Select a country'){
+        if (!country.length || country === 'Select a country'){
             setInfo(<Loading type='warning'>Select a country!</Loading>)
-        }else{
+        } else {
             const data = axios.get(`https://restcountries.com/v3.1/name/${country}?fullText=true`)
-            data.then(({data}) => {
-                setInfo(data.map((el:{}, idx: number) => <MountListCountries data={el} key={idx}/> ))
-            }).catch(e => console.error(e));
+            getData(data)
         }
     }, [country])
 
