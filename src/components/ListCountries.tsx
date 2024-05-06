@@ -20,7 +20,7 @@ export const ListCountries = () => {
   }
 
   const OptionsCountry = ({name}: ICommonName, idx: number) => (
-    <option key={idx}>{name.common}</option>
+    <option key={idx} value={name.common}>{name.common}</option>
   )
 
   return (
@@ -30,6 +30,7 @@ export const ListCountries = () => {
         : <select
             className="form-select form-select-lg my-2 shadow"
             onChange={selectCountry}
+            aria-label="select-country"
           >
             <option value="Select a country">Select a country</option>
             {data && data.map(OptionsCountry)}

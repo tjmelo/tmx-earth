@@ -1,11 +1,6 @@
+import { ISectionList } from "../../interfaces"
 
-interface CSectionList{
-    data: any,
-    subdata?: any,
-    children: string
-}
-
-export const SectionList:React.FC<CSectionList> = ({data, children, subdata}) => {
+export const SectionList:React.FC<ISectionList> = ({data, children, subdata}) => {
     return(
         <div className={`col-xs-12 my-3 border-bottom`}>
             <span className="text-secondary">
