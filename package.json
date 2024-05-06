@@ -1,15 +1,7 @@
 {
   "name": "tmx-earth",
   "version": "1.0.1",
-  "homepage": "https://tjmelo.github.io/tmx-earth",
   "dependencies": {
-    "@reduxjs/toolkit": "^2.2.3",
-    "@testing-library/jest-dom": "^6.4.2",
-    "@testing-library/react": "^15.0.5",
-    "@testing-library/user-event": "^14.3.0",
-    "@types/jest": "^29.5.12",
-    "@types/node": "^20.12.7",
-    "@types/react": "^18.3.1",
     "axios": "^1.6.8",
     "bootstrap": "^5.2.0",
     "react": "^18.3.1",
@@ -25,7 +17,7 @@
     "build": "react-scripts build",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --detectOpenHandles",
     "eject": "react-scripts eject",
     "stylelint": "stylelint **/*.scss"
   },
@@ -33,6 +25,11 @@
     "extends": [
       "react-app",
       "react-app/jest"
+    ]
+  },
+  "jest": {
+    "transformIgnorePatterns": [
+      "node_modules/(?!axios)/"
     ]
   },
   "browserslist": {
@@ -49,10 +46,18 @@
   },
   "overrides": {
     "react-scripts": {
-        "typescript": "^5"
+      "typescript": "^5"
     }
   },
   "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "@reduxjs/toolkit": "^2.2.3",
+    "@testing-library/jest-dom": "^6.4.2",
+    "@testing-library/react": "^15.0.5",
+    "@testing-library/user-event": "^14.3.0",
+    "@types/jest": "^29.5.12",
+    "@types/node": "^20.12.7",
+    "@types/react": "^18.3.1",
     "@types/react-dom": "^18.3.0",
     "@types/react-redux": "^7.1.23",
     "gh-pages": "^6.1.1",

@@ -1,3 +1,5 @@
+import { ReactNode } from "react"
+
 export interface ITargetEvent {
     target: { value: string }
 }
@@ -17,4 +19,9 @@ export interface ICountry {
 
 export interface IMountListCountries {
     data: any
+}
+export interface ISectionList{
+    data: ReactNode | any,
+    subdata?: ReactNode,
+    children: string
 }

@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should render the information of coutries 1`] = `
+<DocumentFragment>
+  <section
+    class="container"
+  >
+    <div
+      class="alert alert-warning"
+    >
+      Select a country!
+    </div>
+  </section>
+</DocumentFragment>
+`;

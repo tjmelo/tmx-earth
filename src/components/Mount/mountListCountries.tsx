@@ -1,5 +1,5 @@
 import { parseNumber } from '../../utils'
-import { SectionList } from './section-list';
+import { SectionList } from './sectionList';
 import { useEffect, useState } from "react";
 
 import style from "../../styles/components.module.scss"

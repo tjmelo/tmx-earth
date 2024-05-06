@@ -1,0 +1,187 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should render a Mount List Country 1`] = `
+<DocumentFragment>
+  <div
+    class="row my-5"
+  >
+    <div
+      class="col-xs-12 d-flex mb-2 flag"
+    >
+      <figure>
+        <img
+          alt="Official name test"
+          src="SVG data test"
+        />
+      </figure>
+      <span
+        class="text-primary name"
+      >
+        Common name test
+      </span>
+      <img
+        alt="Official name test"
+        height="30"
+        src="SVG data test"
+        width="30"
+      />
+    </div>
+    <div
+      class="col-xs-12 my-3 border-bottom"
+    >
+      <span
+        class="text-secondary"
+      >
+        Native name:
+      </span>
+      <br />
+      <strong
+        class="text-primary"
+      />
+      <br />
+    </div>
+    <div
+      class="col-xs-12 my-3 border-bottom"
+    >
+      <span
+        class="text-secondary"
+      >
+        Capital:
+      </span>
+      <br />
+      <strong
+        class="text-primary"
+      >
+        -----
+      </strong>
+      <br />
+    </div>
+    <div
+      class="col-xs-12 my-3 border-bottom"
+    >
+      <span
+        class="text-secondary"
+      >
+        Region:
+      </span>
+      <br />
+      <strong
+        class="text-primary"
+      >
+        -----
+      </strong>
+      <br />
+    </div>
+    <div
+      class="col-xs-12 my-3 border-bottom"
+    >
+      <span
+        class="text-secondary"
+      >
+        Subregion:
+      </span>
+      <br />
+      <strong
+        class="text-primary"
+      >
+        -----
+      </strong>
+      <br />
+    </div>
+    <div
+      class="col-xs-12 my-3 border-bottom"
+    >
+      <span
+        class="text-secondary"
+      >
+        Languages:
+      </span>
+      <br />
+      <strong
+        class="text-primary"
+      >
+        language test
+      </strong>
+      <br />
+    </div>
+    <div
+      class="col-xs-12 my-3 border-bottom"
+    >
+      <span
+        class="text-secondary"
+      >
+        Currencies:
+      </span>
+      <br />
+      <strong
+        class="text-primary"
+      />
+      <br />
+    </div>
+    <div
+      class="col-xs-12 col-sm-6 col-md-4 col-lg-4 mb-3 border-bottom"
+    >
+      <span
+        class="text-secondary"
+      >
+        Borders: 
+      </span>
+       
+      <br />
+      <strong
+        class="text-primary"
+      >
+        -----
+      </strong>
+    </div>
+    <div
+      class="col-xs-12 my-3 border-bottom"
+    >
+      <span
+        class="text-secondary"
+      >
+        Poulation:
+      </span>
+      <br />
+      <strong
+        class="text-primary"
+      >
+        101.010
+      </strong>
+      <br />
+    </div>
+    <div
+      class="col-xs-12 my-3 border-bottom"
+    >
+      <span
+        class="text-secondary"
+      >
+        Area:
+      </span>
+      <br />
+      <strong
+        class="text-primary"
+      >
+        999.999
+      </strong>
+      <br />
+    </div>
+    <div
+      class="col-xs-12 my-3 border-bottom"
+    >
+      <span
+        class="text-secondary"
+      >
+        Domain:
+      </span>
+      <br />
+      <strong
+        class="text-primary"
+      >
+        -----
+      </strong>
+      <br />
+    </div>
+  </div>
+</DocumentFragment>
+`;
