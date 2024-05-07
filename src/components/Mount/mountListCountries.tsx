@@ -34,12 +34,16 @@ export const MountListCountries:React.FC<IMountListCountries> = ({ data }) => {
         <span className={`text-primary ${style.name}`}>
           {data.name.common}
         </span>
-        <img
-          width={30}
-          height={30}
-          src={data.coatOfArms.svg}
-          alt={data.name.official}
-        />
+        { data.coatOfArms.svg 
+          && (
+            <img
+              width={30}
+              height={30}
+              src={data.coatOfArms.svg}
+              alt={data.name.official}
+            />
+          )
+        }
       </div>
 
       <SectionList 
