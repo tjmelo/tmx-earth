@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { apiListCountries } from '../model/api'
+import { alphabeticalOrderData } from '../utils/alphabeticalOrder'
 import { useDispatch } from 'react-redux'
 import { update } from '../feature/country/countrySlice'
 import Loading from './Load'
@@ -12,11 +13,11 @@ export const ListCountries = () => {
 
   useEffect(() => {
     apiListCountries().then(({ data, status }) => 
-      status !== 200 ? setData([]) : setData(data))
+      status !== 200 ? setData([]) : setData(alphabeticalOrderData(data)))
   }, [])
 
-  const selectCountry = (event: ITargetEvent) => {
-    dispatch(update(event.target.value))
+  const selectCountry = ({target}: ITargetEvent) => {
+    dispatch(update(target.value))
   }
 
   const OptionsCountry = ({name}: ICommonName, idx: number) => (
