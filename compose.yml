@@ -1,0 +1,9 @@
+services:
+  tmx-earth:
+    container_name: ${PROJECT_NAME:-tmx-earth}-c
+    build: .
+    image: tmwd/${PROJECT_NAME:-tmx-earth}:${PROJECT_VERSION:-latest}
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/${PROJECT_NAME:-tmx-earth}

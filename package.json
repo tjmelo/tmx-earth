@@ -1,6 +1,6 @@
 {
   "name": "tmx-earth",
-  "version": "1.0.1",
+  "version": "1.2.0",
   "homepage": "https://tjmelo.github.io/tmx-earth",
   "dependencies": {
     "axios": "^1.6.8",
