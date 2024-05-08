@@ -3,6 +3,10 @@ name: Publish Docker image
 on:
   release:
     types: [published]
+
+env:
+  REGISTRY: tmwd
+  IMAGE_NAME: tmx-earth
   
 jobs:
   push_to_registry:
