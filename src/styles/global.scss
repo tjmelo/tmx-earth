@@ -5,8 +5,9 @@
 body,
 input,
 select {
-  font-family: "Noto Sans JP", sans-serif;
   color: var(--text);
+  font-family: "Noto Sans JP", sans-serif;
+  padding: 2rem
 }
 
 span {

@@ -15,17 +15,17 @@ export const InfoCountries = () => {
     const getData = async (fetchData: Promise<AxiosResponse<any, any>>) => {
         try {
             const { data } = await fetchData;
-            setInfo(data.map((el:{cca2: string}) => <MountListCountries data={el} key={el.cca2}/> ))
+            setInfo(data?.map((el:{cca2: string}) => <MountListCountries data={el} key={el.cca2}/> ))
         } catch (e) {
             console.error(e)
         }
     }
 
     useEffect(() => {    
-        setInfo(<div className="alert alert-primary">Getting data...</div>)
+        setInfo(<div className="alert alert-primary my-2">Getting data...</div>)
 
-        if (!country.length || country === 'Select a country'){
-            setInfo(<Loading type='warning'>Select a country!</Loading>)
+        if (!country.length || country === 'Type the name of a country'){
+            setInfo(<Loading type='warning'>Type the name of a country!</Loading>)
         } else {
             const data = axios.get(`https://restcountries.com/v3.1/name/${country}?fullText=true`)
             getData(data)
