@@ -1,6 +1,7 @@
 import { parseNumber } from '../../utils'
 import { SectionList } from './sectionList';
 import { useEffect, useState } from "react";
+import Skeleton from '@mui/material/Skeleton';
 
 import style from "../../styles/components.module.scss"
 import { IMountListCountries } from '../../interfaces';
@@ -25,54 +26,63 @@ export const MountListCountries:React.FC<IMountListCountries> = ({ data }) => {
       <div
         className={`col-xs-12 d-flex mb-2 ${style.flag}`}
       >
-        <figure>
-          <img
-            src={data.flags.svg}
-            alt={data.name.official}
-          />
-        </figure>
+        { data.flags.svg
+          ? (
+            <figure>
+              <img
+                src={data.flags.svg}
+                alt={data.name.official}
+              />
+            </figure>
+          ) : (
+            <Skeleton variant="rectangular" width={100} height={80} />
+          )
+
+        }
         <span className={`text-primary ${style.name}`}>
           {data.name.common}
         </span>
-        { data.coatOfArms.svg 
-          && (
+        { data.coatOfArms.svg
+          ? (
             <img
               width={30}
               height={30}
               src={data.coatOfArms.svg}
               alt={data.name.official}
             />
+          ) : (
+            <Skeleton variant="circular" width={30} height={30} />
           )
         }
       </div>
 
       <SectionList 
-        data={nativeName ? data.name.nativeName[nativeName].common: ''}>
+        data={nativeName ? data.name.nativeName[nativeName].common : <Skeleton width={100} />}>
         Native name:
       </SectionList>
 
       <SectionList 
-        data={ data.capital || "-----" }>
+        data={ data.capital || <Skeleton width={100} /> }>
         Capital:
       </SectionList>
 
       <SectionList 
-        data={ data.region || "-----" }>
+        data={ data.region || <Skeleton width={100} /> }>
         Region:
       </SectionList>
 
       <SectionList 
-        data={ data.subregion || "-----" }>
+        data={ data.subregion || <Skeleton width={100} /> }>
         Subregion:
       </SectionList>
 
       <SectionList 
-        data={ data.languages ? Object.values(data.languages)[0] : "-----" }>
+        data={ data.languages ? Object.values(data.languages)[0] : <Skeleton width={100} /> }>
         Languages:
       </SectionList>
 
       <SectionList 
-        data={ currencies && data.currencies[currencies].name }
+        data={ currencies ? data.currencies[currencies].name : <Skeleton width={100} /> }
         subdata={currencies && data.currencies[currencies].symbol}>
         Currencies:
       </SectionList>
@@ -81,7 +91,7 @@ export const MountListCountries:React.FC<IMountListCountries> = ({ data }) => {
         <span className="text-secondary">Borders: </span>{" "}
         <br />
         {data.borders ? (
-          data.borders.map((border: any, idx: any) => {
+          data.borders.map((border: string, idx: number) => {
             return (
               <strong
                 key={idx}
@@ -92,22 +102,22 @@ export const MountListCountries:React.FC<IMountListCountries> = ({ data }) => {
             )
           })
         ) : (
-          <strong className="text-primary">-----</strong>
+          <Skeleton width={100} />
         )}
       </div>
 
       <SectionList 
-        data={ parseNumber(data.population) || "-----" }>
+        data={ parseNumber(data.population) || <Skeleton width={100} /> }>
         Poulation:
       </SectionList>
 
       <SectionList 
-        data={ parseNumber(data.area) || "-----" }>
+        data={ parseNumber(data.area) || <Skeleton width={100} /> }>
         Area:
       </SectionList>
 
       <SectionList 
-        data={ data.tld || "-----" }>
+        data={ data.tld || <Skeleton width={100} /> }>
         Domain:
       </SectionList>
         
