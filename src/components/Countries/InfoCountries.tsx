@@ -1,6 +1,7 @@
 import { SetStateAction, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import axios, { AxiosResponse } from 'axios';
+import { AppLoading } from '../../components/Skeleton';
 
 import MountListCountries from '../Mount';
 import Loading from '../Load';
@@ -22,7 +23,7 @@ export const InfoCountries = () => {
     }
 
     useEffect(() => {    
-        setInfo(<div className="alert alert-primary my-2">Getting data...</div>)
+        setInfo(<AppLoading />)
 
         if (!country.length || country === 'Type the name of a country'){
             setInfo(<Loading type='warning'>Type the name of a country!</Loading>)

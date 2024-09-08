@@ -24,5 +24,5 @@ export interface IMountListCountries {
 export interface ISectionList{
     data: ReactNode | any,
     subdata?: ReactNode,
-    children: string
+    children: string | ReactNode
 }
