@@ -6,9 +6,9 @@ exports[`Should render the information of coutries 1`] = `
     class="container"
   >
     <div
-      class="alert alert-warning"
+      class="alert alert-warning my-2"
     >
-      Select a country!
+      Type the name of a country!
     </div>
   </section>
 </DocumentFragment>
