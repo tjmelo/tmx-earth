@@ -1,11 +1,12 @@
 import { ReactNode } from "react"
 
 export interface ITargetEvent {
-    target: { value: string }
+    value: string | null
 }
 
 export interface ICommonName {
     name: { common: string }
+    flag: string
 }
 
 export interface ILoading {

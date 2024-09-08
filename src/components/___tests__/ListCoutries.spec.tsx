@@ -1,4 +1,4 @@
-import {fireEvent, render, screen, waitFor} from '@testing-library/react'
+import {fireEvent, render, screen} from '@testing-library/react'
 import '@testing-library/jest-dom'
 
 import { ListCountries } from '../ListCountries'
@@ -7,14 +7,15 @@ import store from '../../store/store'
 
 test('Should render List coutries options', () => {
     //do
-    const {asFragment, getByText} = render(
+    const {asFragment} = render(
         <Provider store={store}>
             <ListCountries />
         </Provider>
     )
 
     // then
-    expect(getByText('Select a country')).toBeInTheDocument()
+    expect(screen.getAllByText('Country')[0]).toBeInTheDocument()
+    expect(screen.getAllByText('Country')[1]).toBeInTheDocument()
     expect(asFragment()).toMatchSnapshot();
 })
 
@@ -27,9 +28,9 @@ test('Should render another option to select', () => {
     )
     
     const optionSelectTest = 'Brazil'
-    const input: HTMLSelectElement = screen.getByLabelText('select-country')
+    const input: HTMLSelectElement = screen.getByLabelText('Country')
 
-    fireEvent.change(input.options[0], {target: {value: optionSelectTest}})
+    fireEvent.change(input, {target: {value: optionSelectTest}})
     expect(input.value).toBe(optionSelectTest)
 
 })

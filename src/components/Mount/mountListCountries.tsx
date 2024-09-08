@@ -67,7 +67,7 @@ export const MountListCountries:React.FC<IMountListCountries> = ({ data }) => {
       </SectionList>
 
       <SectionList 
-        data={ Object.values(data.languages)[0] || "-----" }>
+        data={ data.languages ? Object.values(data.languages)[0] : "-----" }>
         Languages:
       </SectionList>
 

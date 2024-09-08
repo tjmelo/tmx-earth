@@ -1,41 +1,53 @@
-import React, { useEffect, useState } from 'react'
-import { apiListCountries } from '../model/api'
+import React, { useEffect, useState, SyntheticEvent } from 'react'
+
+import { api } from '../model/api'
 import { alphabeticalOrderData } from '../utils/alphabeticalOrder'
 import { useDispatch } from 'react-redux'
 import { update } from '../feature/country/countrySlice'
 import Loading from './Load'
 
+import TextField from '@mui/material/TextField';
+import Autocomplete, { AutocompleteChangeReason } from '@mui/material/Autocomplete';
+
 import { ICommonName, ITargetEvent } from '../interfaces'
 
 export const ListCountries = () => {
   const dispatch = useDispatch()
+  
   const [data, setData] = useState<[]>([])
-
   useEffect(() => {
-    apiListCountries().then(({ data, status }) => 
-      status !== 200 ? setData([]) : setData(alphabeticalOrderData(data)))
+    (async () => {
+      const { data, status } = await api.get('/all')
+      status !== 200 
+        ? setData([]) 
+        : setData(alphabeticalOrderData(data))
+    })()
   }, [])
-
-  const selectCountry = ({target}: ITargetEvent) => {
-    dispatch(update(target.value))
+  
+  const selectCountry: any = (
+    event:SyntheticEvent, 
+    value: ITargetEvent, 
+    reason:AutocompleteChangeReason
+  ) => { 
+    return value && dispatch(update(value.value))
   }
 
-  const OptionsCountry = ({name}: ICommonName, idx: number) => (
-    <option key={idx} value={name.common}>{name.common}</option>
-  )
+  const OptionsCountry = ({name, flag}: ICommonName,  idx: number) => {
+    return { label:`${flag} ${name.common}`, id: idx, value: name.common }
+  }
 
   return (
     <div className="container">
       {!data 
         ? <Loading type='danger'>Data not found, notify the administrator!</Loading> 
-        : <select
-            className="form-select form-select-lg my-2 shadow"
+        : <Autocomplete
+            sx={{ width: 1 }}
+            id="country"
             onChange={selectCountry}
-            aria-label="select-country"
-          >
-            <option value="Select a country">Select a country</option>
-            {data && data.map(OptionsCountry)}
-          </select>
+            autoHighlight
+            options={data?.map(OptionsCountry)}
+            renderInput={(params) => <TextField {...params} autoFocus label="Country" />}
+          /> 
       }
     </div>
   )

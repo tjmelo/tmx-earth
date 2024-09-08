@@ -5,16 +5,74 @@ exports[`Should render List coutries options 1`] = `
   <div
     class="container"
   >
-    <select
-      aria-label="select-country"
-      class="form-select form-select-lg my-2 shadow"
+    <div
+      class="MuiAutocomplete-root Mui-focused MuiAutocomplete-hasPopupIcon css-s0ns04-MuiAutocomplete-root"
     >
-      <option
-        value="Select a country"
+      <div
+        class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-y4n9bg-MuiFormControl-root-MuiTextField-root"
       >
-        Select a country
-      </option>
-    </select>
+        <label
+          class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeMedium MuiInputLabel-outlined MuiFormLabel-colorPrimary Mui-focused MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeMedium MuiInputLabel-outlined css-18pjc51-MuiFormLabel-root-MuiInputLabel-root"
+          data-shrink="true"
+          for="country"
+          id="country-label"
+        >
+          Country
+        </label>
+        <div
+          class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth Mui-focused MuiInputBase-formControl MuiInputBase-adornedEnd MuiAutocomplete-inputRoot css-1wgn40h-MuiInputBase-root-MuiOutlinedInput-root"
+        >
+          <input
+            aria-autocomplete="list"
+            aria-expanded="false"
+            aria-invalid="false"
+            autocapitalize="none"
+            autocomplete="off"
+            class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused css-lc42l8-MuiInputBase-input-MuiOutlinedInput-input"
+            id="country"
+            role="combobox"
+            spellcheck="false"
+            type="text"
+            value=""
+          />
+          <div
+            class="MuiAutocomplete-endAdornment css-p1olib-MuiAutocomplete-endAdornment"
+          >
+            <button
+              aria-label="Open"
+              class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator css-2anpn7-MuiButtonBase-root-MuiIconButton-root-MuiAutocomplete-popupIndicator"
+              tabindex="-1"
+              title="Open"
+              type="button"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-20bmp1-MuiSvgIcon-root"
+                data-testid="ArrowDropDownIcon"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M7 10l5 5 5-5z"
+                />
+              </svg>
+            </button>
+          </div>
+          <fieldset
+            aria-hidden="true"
+            class="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
+          >
+            <legend
+              class="css-kg5swy"
+            >
+              <span>
+                Country
+              </span>
+            </legend>
+          </fieldset>
+        </div>
+      </div>
+    </div>
   </div>
 </DocumentFragment>
 `;
