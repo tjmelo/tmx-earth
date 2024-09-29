@@ -21,7 +21,7 @@
     "build": "react-scripts build",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "test": "react-scripts test --collect-coverage --colors --watchAll",
+    "test": "react-scripts test --collect-coverage --colors --watchAll=false",
     "eject": "react-scripts eject",
     "stylelint": "stylelint **/*.scss"
   },
