@@ -1,12 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Should render List coutries options 1`] = `
+exports[`Shoul render component List Coutries Should render List coutries options 1`] = `
 <DocumentFragment>
   <div
     class="container"
   >
     <div
       class="MuiAutocomplete-root Mui-focused MuiAutocomplete-hasPopupIcon css-s0ns04-MuiAutocomplete-root"
+      data-testid="test-country"
     >
       <div
         class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-y4n9bg-MuiFormControl-root-MuiTextField-root"

@@ -28,9 +28,7 @@ export const ListCountries = () => {
     event:SyntheticEvent, 
     value: ITargetEvent, 
     reason:AutocompleteChangeReason
-  ) => { 
-    return value && dispatch(update(value.value))
-  }
+  ) => value && dispatch(update(value.value))
 
   const OptionsCountry = ({name, flag}: ICommonName,  idx: number) => {
     return { label:`${flag} ${name.common}`, id: idx, value: name.common }
@@ -44,6 +42,7 @@ export const ListCountries = () => {
             sx={{ width: 1 }}
             id="country"
             onChange={selectCountry}
+            data-testid="test-country"
             autoHighlight
             options={data?.map(OptionsCountry)}
             renderInput={(params) => <TextField {...params} autoFocus label="Country" />}
