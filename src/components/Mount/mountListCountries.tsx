@@ -91,17 +91,15 @@ export const MountListCountries:React.FC<IMountListCountries> = ({ data }) => {
         <span className="text-secondary">Borders: </span>{" "}
         <br />
         {data.borders ? (
-          data.borders.map((border: string, idx: number) => {
-            return (
+          data.borders.map((border: string) => (
               <strong
-                key={idx}
+                key={border}
                 className={`text-primary ${style.borders}`}
               >
                 <b>{border} </b>
               </strong>
             )
-          })
-        ) : (
+          )) : (
           <Skeleton width={100} />
         )}
       </div>

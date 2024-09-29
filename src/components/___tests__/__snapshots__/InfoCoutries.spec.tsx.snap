@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Should render the information of coutries 1`] = `
+exports[`Should render the information of coutries Should render without a default value 1`] = `
 <DocumentFragment>
   <section
     class="container"
