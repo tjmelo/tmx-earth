@@ -1,12 +1,13 @@
 import { SetStateAction, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import axios, { AxiosResponse } from 'axios';
+import { AxiosResponse } from 'axios';
 import { AppLoading } from '../../components/Skeleton';
 
 import MountListCountries from '../Mount';
 import Loading from '../Load';
 
 import { ICountry } from '../../interfaces';
+import { toRequestOne } from '../../service';
 
 export const InfoCountries = () => {
 
@@ -28,7 +29,7 @@ export const InfoCountries = () => {
         if (!country.length || country === 'Type the name of a country'){
             setInfo(<Loading type='warning'>Type the name of a country!</Loading>)
         } else {
-            const data = axios.get(`https://restcountries.com/v3.1/name/${country}?fullText=true`)
+            const data = toRequestOne(country)
             getData(data)
         }
     }, [country])

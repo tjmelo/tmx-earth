@@ -6,18 +6,21 @@ import store from "./store/store"
 import { ListCountries } from "./components/ListCountries"
 import Loading from "./components/Load"
 import "./styles/global.scss"
+import { QueryClient, QueryClientProvider } from "react-query"
 
 const InfoCountries = lazy(() => import("./components/Countries"))
 const appRoot = createRoot(document.getElementById("root") as HTMLElement);
 
+const queryClient = new QueryClient()
+
 appRoot.render(
-  <React.StrictMode>
-    <Provider store={store}>
+  <Provider store={store}>
+    <QueryClientProvider client={queryClient}>
       <ListCountries />
       <Suspense 
         fallback={<Loading type="info">Loading app!</Loading>}>
         <InfoCountries />
       </Suspense>
-    </Provider>
-  </React.StrictMode>
+    </QueryClientProvider>
+  </Provider>
 )
