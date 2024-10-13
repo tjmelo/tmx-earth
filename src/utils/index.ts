@@ -1,4 +1,1 @@
-import { parseNumber } from "./parse-number";
-export {
-    parseNumber
-}
+export  { parseNumber } from "./parse-number";

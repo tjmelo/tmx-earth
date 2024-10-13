@@ -26,13 +26,13 @@ Preview project here:
 Download and install project's packages
 
 ```javascript
-npm install
+yarn install
 ```
 
 Basic Initialize project
 
 ```javascript
-npm start
+yarn start
 ```
 
 For more instructions about developer environment, look at: [package.json](https://github.com/tjmelo/tmx-earth/blob/main/package.json)

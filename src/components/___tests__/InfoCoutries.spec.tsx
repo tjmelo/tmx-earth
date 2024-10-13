@@ -16,7 +16,7 @@ describe('Should render the information of coutries', () => {
         )
     
         //then    
-        await screen.findByText('Type the name of a country!')
+        await screen.findByText('Type the name of a country')
         expect(asFragment()).toMatchSnapshot();
     })
 

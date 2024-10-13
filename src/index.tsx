@@ -5,8 +5,9 @@ import store from "./store/store"
 
 import { ListCountries } from "./components/ListCountries"
 import Loading from "./components/Load"
-import "./styles/global.scss"
 import { QueryClient, QueryClientProvider } from "react-query"
+
+import "./styles/global.scss"
 
 const InfoCountries = lazy(() => import("./components/Countries"))
 const appRoot = createRoot(document.getElementById("root") as HTMLElement);
