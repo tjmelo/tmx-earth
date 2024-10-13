@@ -8,7 +8,7 @@ exports[`Should render the information of coutries Should render without a defau
     <div
       class="alert alert-warning my-2"
     >
-      Type the name of a country!
+      Type the name of a country
     </div>
   </section>
 </DocumentFragment>

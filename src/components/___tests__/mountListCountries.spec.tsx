@@ -1,34 +1,44 @@
-import {render} from '@testing-library/react'
+import {render, screen} from '@testing-library/react'
 import '@testing-library/jest-dom'
 
 import MountListCountries from '../Mount'
+import { TListData } from '../../interfaces'
 
-const dataTest = {
+const dataTest: TListData = {
     flags: {
         svg: 'SVG data test'
     },
     name: {
-        official: 'Official name test',
-        common: 'Common name test',
+        official: 'Test data',
+        nativeName: {
+            'test': {
+                common: 'Common name test'
+            }
+        },
+        common: ''
     },
     coatOfArms: {
         svg: 'SVG data test',
     },
     languages: [
-        'language test', 
+        'language test',
         'other language test'
     ],
     population: 101010,
-    area: 999999
-
-
+    area: 999999,
+    currencies: {},
+    capital: '',
+    region: '',
+    subregion: '',
+    borders: [],
+    tld: []
 }
 
 test('Should render a Mount List Country', () => {
     //do
-    const {asFragment, getByText} = render(<MountListCountries data={dataTest}/>)
+    const {asFragment} = render(<MountListCountries data={dataTest}/>)
 
     // then
-    expect(getByText('Common name test')).toBeInTheDocument()
+    expect(screen.getByText('Common name test')).toBeInTheDocument()
     expect(asFragment()).toMatchSnapshot();
 })

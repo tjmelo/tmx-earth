@@ -19,9 +19,9 @@ export const ListCountries = () => {
 
   const countries = alphabeticalOrderData(data?.data ?? [])
 
-  const selectCountry: any = (
+  const selectCountry = (
     event:SyntheticEvent, 
-    value: ITargetEvent, 
+    value: ITargetEvent | null, 
     reason:AutocompleteChangeReason
   ) => value && dispatch(update(value.value))
 

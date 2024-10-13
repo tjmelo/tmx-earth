@@ -6,7 +6,7 @@ import Skeleton from '@mui/material/Skeleton';
 import style from "../../styles/components.module.scss"
 import { IMountListCountries } from '../../interfaces';
 
-export const MountListCountries:React.FC<IMountListCountries> = ({ data }) => {
+export const MountListCountries:React.FC<IMountListCountries> = ({ data }: IMountListCountries) => {
   
   const [nativeName, setNativeName] = useState<string>()
   const [currencies, setCurrencies] = useState<string>()

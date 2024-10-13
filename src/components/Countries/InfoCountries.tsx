@@ -1,4 +1,4 @@
-import { SetStateAction, useEffect, useState } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { AxiosResponse } from 'axios';
 import { AppLoading } from '../../components/Skeleton';
@@ -8,26 +8,27 @@ import Loading from '../Load';
 
 import { ICountry } from '../../interfaces';
 import { toRequestOne } from '../../service';
+import { DEFAULT } from '../../constants';
 
 export const InfoCountries = () => {
 
     const country = useSelector((state: ICountry ) => state.country.country);
-    const [info, setInfo] = useState<[] | SetStateAction<any>>([]);
+    const [info, setInfo] = useState<ReactNode>([]);
 
-    const getData = async (fetchData: Promise<AxiosResponse<any, any>>) => {
+    const getData = async (fetchData: Promise<AxiosResponse<[], Element>>) => {
         try {
             const { data } = await fetchData;
-            setInfo(data?.map((el:{cca2: string}) => <MountListCountries data={el} key={el.cca2}/> ))
+            setInfo(data?.map((el) => <MountListCountries data={el} key={JSON.stringify(el)}/>))
         } catch (e) {
             console.error(e)
         }
     }
 
-    useEffect(() => {    
+    useEffect(() => {
         setInfo(<AppLoading />)
 
-        if (!country.length || country === 'Type the name of a country'){
-            setInfo(<Loading type='warning'>Type the name of a country!</Loading>)
+        if (!country.length || country === DEFAULT.title){
+            setInfo(<Loading type='warning'>{DEFAULT.title}</Loading>)
         } else {
             const data = toRequestOne(country)
             getData(data)

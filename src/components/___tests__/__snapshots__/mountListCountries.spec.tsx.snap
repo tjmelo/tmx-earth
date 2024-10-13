@@ -10,17 +10,15 @@ exports[`Should render a Mount List Country 1`] = `
     >
       <figure>
         <img
-          alt="Official name test"
+          alt="Test data"
           src="SVG data test"
         />
       </figure>
       <span
         class="text-primary name"
-      >
-        Common name test
-      </span>
+      />
       <img
-        alt="Official name test"
+        alt="Test data"
         height="30"
         src="SVG data test"
         width="30"
@@ -38,10 +36,7 @@ exports[`Should render a Mount List Country 1`] = `
       <strong
         class="text-primary"
       >
-        <span
-          class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse css-1x8pdvj-MuiSkeleton-root"
-          style="width: 100px;"
-        />
+        Common name test
       </strong>
       <br />
     </div>
@@ -147,10 +142,6 @@ exports[`Should render a Mount List Country 1`] = `
       </span>
        
       <br />
-      <span
-        class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse css-1x8pdvj-MuiSkeleton-root"
-        style="width: 100px;"
-      />
     </div>
     <div
       class="col-xs-12 my-3 border-bottom"
@@ -195,12 +186,7 @@ exports[`Should render a Mount List Country 1`] = `
       <br />
       <strong
         class="text-primary"
-      >
-        <span
-          class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse css-1x8pdvj-MuiSkeleton-root"
-          style="width: 100px;"
-        />
-      </strong>
+      />
       <br />
     </div>
   </div>

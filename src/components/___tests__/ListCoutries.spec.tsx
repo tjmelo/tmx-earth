@@ -1,4 +1,4 @@
-import { fireEvent, render, screen, waitFor, within} from '@testing-library/react'
+import { fireEvent, render, screen, within} from '@testing-library/react'
 import '@testing-library/jest-dom'
 
 import { ListCountries } from '../ListCountries'
@@ -45,7 +45,7 @@ describe('Shoul render component List Coutries', () => {
 
     })
 
-    const mockDataTest: any = [{
+    const mockDataTest = [{
         name: { common: 'Test common A' },
         flag: 'test flag'
     }, {
@@ -57,7 +57,7 @@ describe('Shoul render component List Coutries', () => {
 
     it('Should render alphabetical order', () => {
         // do
-        mockFn(alphabeticalOrderData(mockDataTest))
+        mockFn(alphabeticalOrderData(mockDataTest as []))
 
         // then
         expect(mockFn).toHaveReturned()
