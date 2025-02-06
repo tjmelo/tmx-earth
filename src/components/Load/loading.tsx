@@ -1,3 +1,4 @@
+import React from "react"
 import { ILoading } from "../../interfaces"
 
 export const Loading:React.FC<ILoading> = ({type, children}: ILoading) => {

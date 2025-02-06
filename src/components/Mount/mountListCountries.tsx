@@ -1,6 +1,6 @@
 import { parseNumber } from '../../utils'
 import { SectionList } from './sectionList';
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Skeleton from '@mui/material/Skeleton';
 
 import style from "../../styles/components.module.scss"

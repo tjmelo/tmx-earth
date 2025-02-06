@@ -1,3 +1,4 @@
+import React from "react"
 import { ISectionList } from "../../interfaces"
 
 export const SectionList:React.FC<ISectionList> = ({data, children, subdata}) => {
