@@ -53,7 +53,7 @@ exports[`Should render a Mount List Country 1`] = `
         class="text-primary"
       >
         <span
-          class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse css-1x8pdvj-MuiSkeleton-root"
+          class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse css-kkcbhd-MuiSkeleton-root"
           style="width: 100px;"
         />
       </strong>
@@ -72,7 +72,7 @@ exports[`Should render a Mount List Country 1`] = `
         class="text-primary"
       >
         <span
-          class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse css-1x8pdvj-MuiSkeleton-root"
+          class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse css-kkcbhd-MuiSkeleton-root"
           style="width: 100px;"
         />
       </strong>
@@ -91,7 +91,7 @@ exports[`Should render a Mount List Country 1`] = `
         class="text-primary"
       >
         <span
-          class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse css-1x8pdvj-MuiSkeleton-root"
+          class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse css-kkcbhd-MuiSkeleton-root"
           style="width: 100px;"
         />
       </strong>
@@ -126,7 +126,7 @@ exports[`Should render a Mount List Country 1`] = `
         class="text-primary"
       >
         <span
-          class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse css-1x8pdvj-MuiSkeleton-root"
+          class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse css-kkcbhd-MuiSkeleton-root"
           style="width: 100px;"
         />
       </strong>
