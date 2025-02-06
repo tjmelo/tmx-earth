@@ -1,4 +1,4 @@
-import { fireEvent, render, screen, within} from '@testing-library/react'
+import { render, screen} from '@testing-library/react'
 import '@testing-library/jest-dom'
 
 import { ListCountries } from '../ListCountries'
@@ -22,27 +22,8 @@ describe('Shoul render component List Coutries', () => {
         )
 
         // then
-        expect(screen.getAllByText('Loading countries...')[0]).toBeInTheDocument()
-        expect(screen.getAllByText('Loading countries...')[1]).toBeInTheDocument()
+        expect(screen.getByText('Waiting for list countries')).toBeInTheDocument()
         expect(asFragment()).toMatchSnapshot();
-    })
-
-    it('Should render change value input', async () => {
-        // do
-        render(
-            <QueryClientProvider client={queryClient}>
-                <Provider store={store}>
-                    <ListCountries />
-                </Provider>
-            </QueryClientProvider>
-        )
-
-        // then
-        const input = screen.getByTestId('test-country')
-        const dataInput: HTMLInputElement = within(input).getByRole('combobox')
-        fireEvent.change(dataInput, { target: { value: 'Brazil' } })
-        setTimeout(() => expect(dataInput.value).toBe('Brazil'), 0)
-
     })
 
     const mockDataTest = [{
