@@ -38,7 +38,7 @@ export interface ITargetEvent {
 
 export interface ICommonName {
     name: { common: string }
-    flag: string
+    flags: { svg: string }
 }
 
 export interface ILoading {
