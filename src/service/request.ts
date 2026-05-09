@@ -2,7 +2,7 @@ import axios from "axios"
 import { api } from "../model/api"
 
 export const toRequestAll = async () => {
-    const { data, status } = await api.get('/all')
+    const { data, status } = await api.get('/all?fields=name,flags')
     return { data, status }
 }
 

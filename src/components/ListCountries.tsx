@@ -18,8 +18,10 @@ export const ListCountries = () => {
     dispatch(update(event.target.value))
   }
 
-  const OptionsCountry = ({name, flag}: ICommonName, idx: number) => (
-    <option key={idx} value={name.common}>{`${flag} ${name.common}`}</option>
+  const OptionsCountry = ({name, flags}: ICommonName, idx: number) => (
+    <option key={idx} value={name.common}>
+      {name.common}
+    </option>
   )
 
   if(isError) return <Loading type='danger'>Data not found, notify the administrator!</Loading> 
