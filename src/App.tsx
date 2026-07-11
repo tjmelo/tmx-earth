@@ -8,10 +8,14 @@ import InfoCountries from "./components/Countries"
 import "./styles/global.scss"
 import { createPortal } from "react-dom"
 import { rootStyle } from "./utils/styleScope"
+import { ThemeProvider } from "@mui/material/styles"
+import { CssBaseline } from "@mui/material"
+import { createAppTheme } from "./styles/theme"
+import { useAppearancePreference } from "./hooks/useAppearancePreference"
 
 const queryClient = new QueryClient()
 
-const App = () => {
+const AppContent = () => {
     const sectionRef = useRef<HTMLElement>(null);
     const [shadowRootRef, setShadowRootRef] = useState<ShadowRoot | null>(null)
 
@@ -35,21 +39,33 @@ const App = () => {
     }, []);
 
     return (
+        <section id="tmx-earth" ref={sectionRef}>
+        {shadowRootRef &&
+            createPortal(
+                <>
+                    <ListCountries />
+                    <InfoCountries />
+                </>,
+                shadowRootRef
+        )}
+        </section>
+    )
+}
+
+const App = () => {
+    const { appearance } = useAppearancePreference()
+    const theme = createAppTheme(appearance)
+
+    return (
         <Provider store={store}>
             <QueryClientProvider client={queryClient}>
-            <Suspense 
-                fallback={<Loading type="info">Loading app!</Loading>}>
-                <section id="tmx-earth" ref={sectionRef}>
-                {shadowRootRef &&
-                    createPortal(
-                        <>
-                            <ListCountries />
-                            <InfoCountries />
-                        </>,
-                        shadowRootRef
-                )}
-                </section>
-            </Suspense>
+                <ThemeProvider theme={theme}>
+                    <CssBaseline />
+                    <Suspense 
+                        fallback={<Loading type="info">Loading app!</Loading>}>
+                        <AppContent />
+                    </Suspense>
+                </ThemeProvider>
             </QueryClientProvider>
         </Provider>
     )

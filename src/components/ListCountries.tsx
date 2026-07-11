@@ -11,34 +11,40 @@ import { useQuery } from 'react-query'
 
 export const ListCountries = () => {
   const dispatch = useDispatch()
-  const { data, isError } = useQuery('requestAll', toRequestAll)
+  const { data, isError, isLoading } = useQuery('requestAll', toRequestAll)
   const countries = alphabeticalOrderData(data?.data ?? [])
 
   const selectCountry = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    dispatch(update(event.target.value))
+    const value = event.target.value
+    if (value) {
+      dispatch(update(value))
+    }
   }
 
-  const OptionsCountry = ({name, flags}: ICommonName, idx: number) => (
-    <option key={idx} value={name.common}>
+  const OptionsCountry = ({ name }: ICommonName, idx: number) => (
+    <option key={`${name.common}-${idx}`} value={name.common}>
       {name.common}
     </option>
   )
 
-  if(isError) return <Loading type='danger'>Data not found, notify the administrator!</Loading> 
-  
+  if (isError) {
+    return <Loading type='danger'>Data not found, notify the administrator!</Loading>
+  }
+
   return (
     <div className="container">
-      {!data 
-        ? <Loading type='info'>Waiting for list countries</Loading> 
-        : <select
-            className="form-select form-select-lg my-2 shadow"
-            onChange={selectCountry}
-            aria-label="select-country"
-          >
-            <option value="Select a country">Select a country</option>
-            {countries.map(OptionsCountry)}
-          </select>
-      }
+      {isLoading && !data ? (
+        <Loading type='info'>Waiting for list countries</Loading>
+      ) : (
+        <select
+          className="form-select form-select-lg my-2 shadow"
+          onChange={selectCountry}
+          aria-label="select-country"
+        >
+          <option value="">Select a country</option>
+          {countries.map(OptionsCountry)}
+        </select>
+      )}
     </div>
   )
 }

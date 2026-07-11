@@ -20,10 +20,10 @@
 
 **Purpose**: Implement the theme infrastructure and preserve the existing API contract before story work begins.
 
-- [ ] T006 Update `src/App.tsx` to wrap the app with MUI `ThemeProvider`, apply the active theme from `useAppearancePreference`, and preserve existing shadow DOM rendering
-- [ ] T007 Update `src/model/api.ts` to keep `baseURL` as `https://restcountries.com/v3.1` and document the preserved API contract
-- [ ] T008 Update `src/service/request.ts` so `toRequestOne` uses the shared `api` instance and preserves the existing field contract for country details
-- [ ] T009 Add `src/components/___tests__/DarkModeToggle.spec.tsx` to verify the toggle updates UI state and persists `tmx:appearance`
+- [X] T006 Update `src/App.tsx` to wrap the app with MUI `ThemeProvider`, apply the active theme from `useAppearancePreference`, and preserve existing shadow DOM rendering
+- [X] T007 Update `src/model/api.ts` to keep `baseURL` as `https://restcountries.com/v3.1` and document the preserved API contract
+- [X] T008 Update `src/service/request.ts` so `toRequestOne` uses the shared `api` instance and preserves the existing field contract for country details
+- [X] T009 Add `src/components/___tests__/DarkModeToggle.spec.tsx` to verify the toggle updates UI state and persists `tmx:appearance`
 
 ---
 
@@ -33,10 +33,10 @@
 
 **Independent Test**: Open the app, select a country from the list, and verify the details view appears with the current fields.
 
-- [ ] T010 [US1] Update `src/components/ListCountries.tsx` to preserve the current country browsing experience with `react-query` loading, error handling, and selection behavior
-- [ ] T011 [US1] Update `src/components/Countries/InfoCountries.tsx` to preserve the country detail view and handle slow or failing API responses without losing the current visible information
-- [ ] T012 [US1] Update `src/components/___tests__/ListCoutries.spec.tsx` to assert that selecting a country triggers the existing details flow
-- [ ] T013 [US1] Update `src/components/___tests__/InfoCoutries.spec.tsx` to assert the current country details are rendered for a selected country
+- [X] T010 [US1] Update `src/components/ListCountries.tsx` to preserve the current country browsing experience with `react-query` loading, error handling, and selection behavior
+- [X] T011 [US1] Update `src/components/Countries/InfoCountries.tsx` to preserve the country detail view and handle slow or failing API responses without losing the current visible information
+- [X] T012 [US1] Update `src/components/___tests__/ListCoutries.spec.tsx` to assert that selecting a country triggers the existing details flow
+- [X] T013 [US1] Update `src/components/___tests__/InfoCoutries.spec.tsx` to assert the current country details are rendered for a selected country
 
 ---
 

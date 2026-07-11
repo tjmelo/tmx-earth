@@ -11,33 +11,55 @@ import { toRequestOne } from '../../service';
 import { DEFAULT } from '../../constants';
 
 export const InfoCountries = () => {
-
-    const country = useSelector((state: ICountry ) => state.country.country);
+    const country = useSelector((state: ICountry) => state.country.country);
     const [info, setInfo] = useState<ReactNode>([]);
+    const [lastLoadedCountry, setLastLoadedCountry] = useState<string | null>(null);
+    const [isLoadingDetails, setIsLoadingDetails] = useState(false);
 
-    const getData = async (fetchData: Promise<AxiosResponse<[], Element>>) => {
+    const getData = async (fetchData: Promise<AxiosResponse<[], Element>>, selectedCountry: string) => {
         try {
             const { data } = await fetchData;
-            setInfo(data?.map((el) => <MountListCountries data={el} key={JSON.stringify(el)}/>))
+            if (selectedCountry !== country) {
+                return;
+            }
+            setInfo(data?.map((el) => <MountListCountries data={el} key={JSON.stringify(el)} />) ?? [])
+            setLastLoadedCountry(selectedCountry)
+            setIsLoadingDetails(false)
         } catch (e) {
             console.error(e)
+            if (selectedCountry === country) {
+                if (!lastLoadedCountry) {
+                    setInfo(<Loading type='danger'>Unable to load country details right now.</Loading>)
+                }
+                setLastLoadedCountry(lastLoadedCountry)
+                setIsLoadingDetails(false)
+            }
         }
     }
 
     useEffect(() => {
-        setInfo(<AppLoading />)
-
-        if (!country.length || country === DEFAULT.title){
+        if (!country || country === DEFAULT.title || country === '') {
+            setLastLoadedCountry(null)
+            setIsLoadingDetails(false)
             setInfo(<Loading type='warning'>{DEFAULT.title}</Loading>)
-        } else {
-            const data = toRequestOne(country)
-            getData(data)
+            return
         }
+
+        if (!lastLoadedCountry || lastLoadedCountry === country) {
+            setInfo(<AppLoading />)
+        }
+        setIsLoadingDetails(true)
+
+        const data = toRequestOne(country)
+        getData(data, country)
     }, [country])
 
-    return(
+    return (
         <section className="container">
-            { info }
+            {isLoadingDetails && lastLoadedCountry && lastLoadedCountry !== country ? (
+                <Loading type='info'>{`Loading details for ${country}...`}</Loading>
+            ) : null}
+            {info}
         </section>
     )
 }
