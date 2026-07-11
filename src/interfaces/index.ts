@@ -32,6 +32,23 @@ export type TListData = {
     tld: []
 }
 
+export type AppearancePreference = 'light' | 'dark'
+
+export type Country = {
+    cca3: string
+    name: { common: string }
+    flags: { svg: string }
+    population: number
+    area: number
+    region: string
+    capital: string[]
+    subregion?: string
+    currencies?: TCurrencies
+    languages?: Record<string, string>
+    borders?: string[]
+    tld?: string[]
+}
+
 export interface ITargetEvent {
     value: string
 }
