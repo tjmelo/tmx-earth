@@ -12,7 +12,12 @@ import { Country, ICommonName } from '../interfaces'
 export const ListCountries = () => {
   const dispatch = useDispatch()
   const { data, isError, isLoading } = useQuery('requestAll', toRequestAll)
-  const countries = alphabeticalOrderData((data?.data ?? []) as Country[])
+
+  const resolvedCountries = Array.isArray(data)
+    ? data
+    : (data as { data?: Country[] } | undefined)?.data ?? []
+
+  const countries = alphabeticalOrderData(resolvedCountries as Country[])
 
   const selectCountry = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const value = event.target.value

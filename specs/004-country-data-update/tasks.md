@@ -35,14 +35,14 @@
 
 ### Tests for User Story 1
 
-- [ ] T006 [P] [US1] Add or update request-layer coverage for the list endpoint in src/service/request.spec.ts
-- [ ] T007 [P] [US1] Add or update list component coverage for the browse experience in src/components/___tests__/ListCoutries.spec.tsx
+- [X] T006 [P] [US1] Add or update request-layer coverage for the list endpoint in src/service/request.spec.ts
+- [X] T007 [P] [US1] Add or update list component coverage for the browse experience in src/components/___tests__/ListCoutries.spec.tsx
 
 ### Implementation for User Story 1
 
-- [ ] T008 [US1] Update src/service/request.ts to call the new list endpoint at /countries while preserving the existing UI-facing fields
-- [ ] T009 [US1] Update src/components/ListCountries.tsx to continue rendering the country dropdown, loading state, and selection flow with the migrated data source
-- [ ] T010 [US1] Keep country sorting and selection behavior intact in src/utils/alphabeticalOrder.ts and src/feature/country/countrySlice.ts if the migrated response changes shape
+- [X] T008 [US1] Update src/service/request.ts to call the new list endpoint at /countries while preserving the existing UI-facing fields
+- [X] T009 [US1] Update src/components/ListCountries.tsx to continue rendering the country dropdown, loading state, and selection flow with the migrated data source
+- [X] T010 [US1] Keep country sorting and selection behavior intact in src/utils/alphabeticalOrder.ts and src/feature/country/countrySlice.ts if the migrated response changes shape
 
 **Checkpoint**: User Story 1 should be fully functional and testable independently.
 

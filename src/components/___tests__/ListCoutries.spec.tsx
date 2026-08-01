@@ -33,7 +33,7 @@ describe('Shoul render component List Coutries', () => {
         mockedToRequestAll.mockReset()
     })
 
-    it('Should render List coutries options', () => {
+    it('Should render the loading state while the list request is pending', () => {
         mockedToRequestAll.mockReturnValue(new Promise(() => undefined))
 
         const { asFragment } = renderComponent()
@@ -42,18 +42,39 @@ describe('Shoul render component List Coutries', () => {
         expect(asFragment()).toMatchSnapshot();
     })
 
-    it('Should dispatch the selected country when a user picks an option', async () => {
+    it('Should render the browse options and dispatch the selected country when a user picks an option', async () => {
         mockedToRequestAll.mockResolvedValue({
-            data: [{ name: { common: 'Brazil' }, flags: { svg: 'flag' } }],
+            data: [
+                { name: { common: 'Brazil' }, cca3: 'BRA', flags: { svg: 'flag' } },
+                { name: { common: 'Canada' }, cca3: 'CAN', flags: { svg: 'flag' } },
+            ],
             status: 200,
         } as never)
 
         renderComponent()
 
-        await waitFor(() => expect(screen.getByLabelText('select-country')).toBeInTheDocument())
-        fireEvent.change(screen.getByLabelText('select-country'), { target: { value: 'Brazil' } })
+        const select = await waitFor(() => screen.getByLabelText('select-country'))
+        expect(select).toBeInTheDocument()
+        expect(screen.getByRole('option', { name: 'Brazil' })).toBeInTheDocument()
+        expect(screen.getByRole('option', { name: 'Canada' })).toBeInTheDocument()
+
+        fireEvent.change(select, { target: { value: 'Brazil' } })
 
         expect(store.getState().country.country).toBe('Brazil')
+    })
+
+    it('Should render countries from a direct array response without breaking the dropdown flow', async () => {
+        mockedToRequestAll.mockResolvedValue([
+            { name: { common: 'Argentina' }, cca3: 'ARG', flags: { svg: 'flag' } },
+            { name: { common: 'Chile' }, cca3: 'CHL', flags: { svg: 'flag' } },
+        ] as never)
+
+        renderComponent()
+
+        const select = await waitFor(() => screen.getByLabelText('select-country'))
+        expect(select).toBeInTheDocument()
+        expect(screen.getByRole('option', { name: 'Argentina' })).toBeInTheDocument()
+        expect(screen.getByRole('option', { name: 'Chile' })).toBeInTheDocument()
     })
 
     const mockDataTest = [{
@@ -64,11 +85,9 @@ describe('Shoul render component List Coutries', () => {
         flag: 'test flag'
     }]
 
-    const mockFn = jest.fn(data => data)
-
     it('Should render alphabetical order', () => {
-        mockFn(alphabeticalOrderData(mockDataTest as []))
+        const result = alphabeticalOrderData(mockDataTest as [])
 
-        expect(mockFn).toHaveReturned()
+        expect(result.map((item: { name: { common: string } }) => item.name.common)).toEqual(['Test common A', 'Test common B'])
     })
 })

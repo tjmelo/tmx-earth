@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Shoul render component List Coutries Should render List coutries options 1`] = `
+exports[`Shoul render component List Coutries Should render the loading state while the list request is pending 1`] = `
 <DocumentFragment>
   <div
     class="container"
