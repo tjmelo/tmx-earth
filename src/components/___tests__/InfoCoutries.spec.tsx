@@ -58,4 +58,22 @@ describe('Should render the information of coutries', () => {
         expect(await screen.findByText('Loading details for Argentina...')).toBeInTheDocument()
         expect(screen.getByText('Brazil')).toBeInTheDocument()
     })
+
+    it('renders a friendly fallback when a lookup returns no details', async () => {
+        mockedToRequestOne.mockResolvedValueOnce({
+            data: [],
+        } as never)
+
+        render(
+            <Provider store={store}>
+                <InfoCountries />
+            </Provider>
+        )
+
+        act(() => {
+            store.dispatch(update('Unknown Country'))
+        })
+
+        expect(await screen.findByText(/No details available/i)).toBeInTheDocument()
+    })
 })

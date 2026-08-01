@@ -10,8 +10,8 @@
 
 **Purpose**: Confirm the existing request and UI entry points are ready for the countries.dev migration.
 
-- [ ] T001 [P] Review the existing API client and request helpers in src/model/api.ts and src/service/request.ts so the new endpoints align with the application's current contract
-- [ ] T002 [P] Review the current country list and detail rendering flow in src/components/ListCountries.tsx and src/components/Countries/InfoCountries.tsx to preserve behavior during the migration
+ - [X] T001 [P] Review the existing API client and request helpers in src/model/api.ts and src/service/request.ts so the new endpoints align with the application's current contract
+ - [X] T002 [P] Review the current country list and detail rendering flow in src/components/ListCountries.tsx and src/components/Countries/InfoCountries.tsx to preserve behavior during the migration
 
 ---
 
@@ -19,9 +19,9 @@
 
 **Purpose**: Establish the shared response handling needed before story work begins.
 
-- [ ] T003 Implement a shared defensive country-response handling path so missing provider values are treated as unavailable rather than broken output in src/service/request.ts and src/interfaces/index.ts
-- [ ] T004 [P] Add a small normalization helper for country fields such as name, flags, population, area, and region in src/utils/ or src/service/request.ts
-- [ ] T005 Ensure the existing loading and error states remain clear and accessible during request failures in src/components/ListCountries.tsx and src/components/Countries/InfoCountries.tsx
+- [X] T003 Implement a shared defensive country-response handling path so missing provider values are treated as unavailable rather than broken output in src/service/request.ts and src/interfaces/index.ts
+- [X] T004 [P] Add a small normalization helper for country fields such as name, flags, population, area, and region in src/utils/ or src/service/request.ts
+- [X] T005 Ensure the existing loading and error states remain clear and accessible during request failures in src/components/ListCountries.tsx and src/components/Countries/InfoCountries.tsx
 
 **Checkpoint**: Foundation ready - country browsing and detail lookup can now be implemented in parallel.
 

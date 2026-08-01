@@ -1,4 +1,12 @@
-export const parseNumber = (element: number) => {
+export const parseNumber = (element: number | string | undefined | null) => {
+    if (element === null || element === undefined || element === '') {
+        return 'Unavailable'
+    }
+
+    if (typeof element === 'string' && Number.isNaN(Number(element))) {
+        return 'Unavailable'
+    }
+
     const number = element.toString().split(""),
         qtdeDivisor = Math.floor(number.length / 3),
         arr = []

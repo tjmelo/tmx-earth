@@ -20,10 +20,10 @@ const dataTest: TListData = {
     coatOfArms: {
         svg: 'SVG data test',
     },
-    languages: [
-        'language test',
-        'other language test'
-    ],
+    languages: {
+        en: 'language test',
+        fr: 'other language test'
+    },
     population: 101010,
     area: 999999,
     currencies: {},

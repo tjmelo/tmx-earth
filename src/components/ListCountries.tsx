@@ -7,26 +7,18 @@ import Loading from './Load'
 
 import { toRequestAll } from '../service/request'
 import { useQuery } from 'react-query'
+import { Country, ICommonName } from '../interfaces'
 
 export const ListCountries = () => {
   const dispatch = useDispatch()
   const { data, isError, isLoading } = useQuery('requestAll', toRequestAll)
-  const countries = alphabeticalOrderData(data?.data ?? [])
+  const countries = alphabeticalOrderData((data?.data ?? []) as Country[])
 
   const selectCountry = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const value = event.target.value
     if (value) {
       dispatch(update(value))
     }
-  }
-
-  const OptionsCountry = ({ name }: { name: string }, idx: number) => {
-    console.log(name)
-    return (
-      <option key={idx} value={name}>
-        <p>{name}</p> 
-      </option>
-    )
   }
 
   if (isError) {
@@ -44,7 +36,11 @@ export const ListCountries = () => {
           aria-label="select-country"
         >
           <option value="">Select a country</option>
-          {countries.map(OptionsCountry)}
+          {countries.map((country: ICommonName & Country, idx: number) => (
+            <option key={`${country.cca3}-${idx}`} value={country.name.common || country.name.official || 'Unavailable'}>
+              {country.name.common || country.name.official || 'Unavailable'}
+            </option>
+          ))}
         </select>
       )}
     </div>

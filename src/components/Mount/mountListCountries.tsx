@@ -13,11 +13,15 @@ export const MountListCountries:React.FC<IMountListCountries> = ({ data }: IMoun
 
   useEffect(
     () => {
-      const getNative = (data: object) => {
-        for( const native in data) return native
+      const getNativeKey = (input?: Record<string, unknown> | null) => {
+        if (!input) {
+          return ''
+        }
+        return Object.keys(input)[0] ?? ''
       }
-      setNativeName(getNative(data.name.nativeName))
-      setCurrencies(getNative(data.currencies))
+
+      setNativeName(getNativeKey(data.name.nativeName))
+      setCurrencies(getNativeKey(data.currencies as Record<string, unknown>))
     }, [ data ]
   )
 
@@ -26,38 +30,40 @@ export const MountListCountries:React.FC<IMountListCountries> = ({ data }: IMoun
       <div
         className={`col-xs-12 d-flex mb-2 ${style.flag}`}
       >
-        { data.flags.svg
+        { data.flags.svg && data.flags.svg !== 'Unavailable'
           ? (
             <figure>
               <img
                 src={data.flags.svg}
-                alt={data.name.official}
+                alt={data.name.official || data.name.common}
               />
             </figure>
           ) : (
-            <Skeleton variant="rectangular" width={100} height={80} />
+            <span className="text-secondary">Unavailable</span>
           )
 
         }
         <span className={`text-primary ${style.name}`}>
           {data.name.common}
         </span>
-        { data.coatOfArms.svg
+        { data.coatOfArms.svg && data.coatOfArms.svg !== 'Unavailable'
           ? (
             <img
               width={30}
               height={30}
               src={data.coatOfArms.svg}
-              alt={data.name.official}
+              alt={data.name.official || data.name.common}
             />
           ) : (
-            <Skeleton variant="circular" width={30} height={30} />
+            <span className="text-secondary">Unavailable</span>
           )
         }
       </div>
 
       <SectionList 
-        data={nativeName ? data.name.nativeName[nativeName].common : <Skeleton width={100} />}>
+        data={nativeName && data.name.nativeName
+          ? ((data.name.nativeName as Record<string, { common?: string }>)[nativeName]?.common ?? <Skeleton width={100} />)
+          : <Skeleton width={100} />}> 
         Native name:
       </SectionList>
 
@@ -82,8 +88,8 @@ export const MountListCountries:React.FC<IMountListCountries> = ({ data }: IMoun
       </SectionList>
 
       <SectionList 
-        data={ currencies ? data.currencies[currencies].name : <Skeleton width={100} /> }
-        subdata={currencies && data.currencies[currencies].symbol}>
+        data={ currencies ? data.currencies?.[currencies]?.name ?? <Skeleton width={100} /> : <Skeleton width={100} /> }
+        subdata={currencies ? data.currencies?.[currencies]?.symbol : undefined}>
         Currencies:
       </SectionList>
 

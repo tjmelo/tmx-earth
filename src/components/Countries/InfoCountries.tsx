@@ -1,14 +1,17 @@
 import React, { ReactNode, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { AxiosResponse } from 'axios';
 import { AppLoading } from '../../components/Skeleton';
 
 import MountListCountries from '../Mount';
 import Loading from '../Load';
 
-import { ICountry } from '../../interfaces';
+import { ICountry, TListData, Country } from '../../interfaces';
 import { toRequestOne } from '../../service';
 import { DEFAULT } from '../../constants';
+
+interface ICountryResponse {
+    data: Country[]
+}
 
 export const InfoCountries = () => {
     const country = useSelector((state: ICountry) => state.country.country);
@@ -16,13 +19,21 @@ export const InfoCountries = () => {
     const [lastLoadedCountry, setLastLoadedCountry] = useState<string | null>(null);
     const [isLoadingDetails, setIsLoadingDetails] = useState(false);
 
-    const getData = async (fetchData: Promise<AxiosResponse<[], Element>>, selectedCountry: string) => {
+    const getData = async (fetchData: Promise<ICountryResponse>, selectedCountry: string) => {
         try {
             const { data } = await fetchData;
             if (selectedCountry !== country) {
                 return;
             }
-            setInfo(data?.map((el) => <MountListCountries data={el} key={JSON.stringify(el)} />) ?? [])
+
+            const details = data.length > 0
+                ? data.map((el, index) => {
+                    const detail = el as Country
+                    return <MountListCountries data={detail as unknown as TListData} key={`${JSON.stringify(el)}-${index}`} />
+                })
+                : <Loading type='warning'>{`No details available for ${selectedCountry}.`}</Loading>
+
+            setInfo(details)
             setLastLoadedCountry(selectedCountry)
             setIsLoadingDetails(false)
         } catch (e) {
@@ -31,7 +42,6 @@ export const InfoCountries = () => {
                 if (!lastLoadedCountry) {
                     setInfo(<Loading type='danger'>Unable to load country details right now.</Loading>)
                 }
-                setLastLoadedCountry(lastLoadedCountry)
                 setIsLoadingDetails(false)
             }
         }

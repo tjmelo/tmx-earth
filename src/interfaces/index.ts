@@ -1,13 +1,19 @@
 import { ReactNode } from "react"
 
 export type TName = {
-    official: string
-    nativeName: {
+    official?: string
+    nativeName?: {
         [index: string]: {
             common: string
         }
     }
-    common: string
+    common?: string
+}
+
+export interface ICommonName {
+    name: {
+        common: string
+    }
 }
 
 export type TCurrencies = {
@@ -21,32 +27,34 @@ export type TListData = {
     coatOfArms: { svg: string }
     flags: { svg: string }
     currencies: TCurrencies
-    name: TName
+    name: TName & { common: string; official?: string }
     capital: string
     region: string
     subregion: string
-    languages: Object
-    borders: []
-    population: number,
-    area: number
-    tld: []
+    languages: Record<string, string>
+    borders: string[]
+    population: number | string
+    area: number | string
+    tld: string[]
 }
 
 export type AppearancePreference = 'light' | 'dark'
 
 export type Country = {
     cca3: string
-    name: { common: string }
-    flags: { svg: string }
-    population: number
-    area: number
-    region: string
-    capital: string[]
+    name: TName & { common: string; official?: string }
+    flags: { svg?: string }
+    population?: number | string
+    area?: number | string
+    region?: string
+    capital?: string | string[]
     subregion?: string
     currencies?: TCurrencies
     languages?: Record<string, string>
     borders?: string[]
     tld?: string[]
+    coatOfArms?: { svg?: string }
+    official?: string
 }
 
 export interface ITargetEvent {
