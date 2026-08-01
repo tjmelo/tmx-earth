@@ -1,7 +1,7 @@
 import { api } from "../model/api"
 
 export const toRequestAll = async () => {
-    const { data, status } = await api.get('/all?fields=name,flags')
+    const { data, status } = await api.get('/countries')
     return { data, status }
 }
 
@@ -13,7 +13,7 @@ export const toRequestAll = async () => {
  * @returns Promise with country data from the API
  */
 export const toRequestOne = (country: string) => {
-    // Uses shared api instance (baseURL: https://restcountries.com/v3.1) to preserve API contract
-    const data = api.get(`/name/${country}?fullText=true`)
+    // Uses shared api instance (baseURL: https://countries.dev/) to preserve API contract
+    const data = api.get(`/countries/name/${country}`)
     return data
 }

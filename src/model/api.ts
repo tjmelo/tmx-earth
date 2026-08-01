@@ -22,6 +22,6 @@ import axios, { AxiosInstance } from 'axios';
  * or expected fields are introduced by this feature.
  */
 export const api: AxiosInstance = axios.create({
-    baseURL: 'https://restcountries.com/v3.1',
+    baseURL: 'https://countries.dev/',
     timeout: 10000  
 })

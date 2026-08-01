@@ -5,7 +5,6 @@ import { useDispatch } from 'react-redux'
 import { update } from '../feature/country/countrySlice'
 import Loading from './Load'
 
-import { ICommonName } from '../interfaces'
 import { toRequestAll } from '../service/request'
 import { useQuery } from 'react-query'
 
@@ -21,11 +20,14 @@ export const ListCountries = () => {
     }
   }
 
-  const OptionsCountry = ({ name }: ICommonName, idx: number) => (
-    <option key={`${name.common}-${idx}`} value={name.common}>
-      {name.common}
-    </option>
-  )
+  const OptionsCountry = ({ name }: { name: string }, idx: number) => {
+    console.log(name)
+    return (
+      <option key={idx} value={name}>
+        <p>{name}</p> 
+      </option>
+    )
+  }
 
   if (isError) {
     return <Loading type='danger'>Data not found, notify the administrator!</Loading>

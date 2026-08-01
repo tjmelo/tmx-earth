@@ -53,11 +53,6 @@ export interface ITargetEvent {
     value: string
 }
 
-export interface ICommonName {
-    name: { common: string }
-    flags: { svg: string }
-}
-
 export interface ILoading {
     type: string,
     children: string
