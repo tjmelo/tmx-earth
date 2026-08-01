@@ -32,7 +32,7 @@ describe('DarkModeToggle Component', () => {
     expect(button).toHaveAttribute('aria-pressed', 'false')
   })
 
-  it('Should update UI state when toggle button is clicked', () => {
+  it('Should update UI state when toggle button is clicked', async () => {
     // do
     render(<DarkModeToggle />)
     const button = screen.getByTestId('dark-mode-toggle')
@@ -45,7 +45,7 @@ describe('DarkModeToggle Component', () => {
     fireEvent.click(button)
 
     // then: Verify UI updates
-    waitFor(() => {
+    await waitFor(() => {
       expect(button).toHaveTextContent('Switch to Light Mode')
       expect(button).toHaveAttribute('aria-pressed', 'true')
     })
@@ -66,7 +66,7 @@ describe('DarkModeToggle Component', () => {
     })
   })
 
-  it('Should restore preference from localStorage on mount', () => {
+  it('Should restore preference from localStorage on mount', async () => {
     // do: Set dark mode in localStorage
     localStorage.setItem('tmx:appearance', 'dark')
 
@@ -75,7 +75,7 @@ describe('DarkModeToggle Component', () => {
 
     // then: Button should show "Switch to Light Mode"
     const button = screen.getByTestId('dark-mode-toggle')
-    waitFor(() => {
+    await waitFor(() => {
       expect(button).toHaveTextContent('Switch to Light Mode')
       expect(button).toHaveAttribute('aria-pressed', 'true')
     })

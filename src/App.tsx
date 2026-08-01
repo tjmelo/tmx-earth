@@ -12,41 +12,50 @@ import { ThemeProvider } from "@mui/material/styles"
 import { CssBaseline } from "@mui/material"
 import { createAppTheme } from "./styles/theme"
 import { useAppearancePreference } from "./hooks/useAppearancePreference"
+import DarkModeToggle from "./components/DarkModeToggle"
 
 const queryClient = new QueryClient()
 
-const AppContent = () => {
-    const sectionRef = useRef<HTMLElement>(null);
+const AppContent = ({ appearance }: { appearance: string }) => {
+    const sectionRef = useRef<HTMLElement>(null)
     const [shadowRootRef, setShadowRootRef] = useState<ShadowRoot | null>(null)
 
     useEffect(() => {
         if (sectionRef.current) {
-            const shadowRoot = sectionRef.current.attachShadow({ mode: 'open', delegatesFocus: true });
-            const event = new CustomEvent("shadowroot-created");
-            sectionRef.current.dispatchEvent(event);
+            sectionRef.current.dataset.theme = appearance
+        }
+    }, [appearance])
+
+    useEffect(() => {
+        if (sectionRef.current) {
+            const shadowRoot = sectionRef.current.attachShadow({ mode: 'open', delegatesFocus: true })
+            const event = new CustomEvent("shadowroot-created")
+            sectionRef.current.dispatchEvent(event)
             setShadowRootRef(shadowRoot)
 
             shadowRoot.innerHTML = `
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous" />
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>`
 
-            const styleElement = rootStyle();
+            const styleElement = rootStyle()
             if (styleElement) {
-                const styleElement = rootStyle();
-                styleElement && shadowRoot.appendChild(styleElement);
+                shadowRoot.appendChild(styleElement)
             }
         }
-    }, []);
+    }, [])
 
     return (
         <section id="tmx-earth" ref={sectionRef}>
         {shadowRootRef &&
             createPortal(
                 <>
+                    <div className="theme-bar">
+                        <DarkModeToggle />
+                    </div>
                     <ListCountries />
                     <InfoCountries />
                 </>,
-                shadowRootRef
+                shadowRootRef,
         )}
         </section>
     )
@@ -63,7 +72,7 @@ const App = () => {
                     <CssBaseline />
                     <Suspense 
                         fallback={<Loading type="info">Loading app!</Loading>}>
-                        <AppContent />
+                        <AppContent appearance={appearance} />
                     </Suspense>
                 </ThemeProvider>
             </QueryClientProvider>

@@ -1,17 +1,43 @@
-:root {
-  --text: #313131;
-}
-
 :host {
-  padding: 1rem
+  --text: #313131;
+  --background: #ffffff;
+  --surface: #f8f9fa;
+  --border: rgba(0, 0, 0, 0.12);
+  background: var(--background);
+  color: var(--text);
+  padding: 1rem;
+  min-height: 100vh;
+  display: block;
 }
 
-body,
-input,
-select {
-  color: var(--text);
+:host([data-theme="dark"]) {
+  --text: #ffffff;
+  --background: #121212;
+  --surface: #1f1f1f;
+  --border: rgba(255, 255, 255, 0.16);
+}
+
+:host * {
   font-family: "Noto Sans JP", sans-serif;
-  padding: 2rem
+}
+
+select,
+input,
+button {
+  color: var(--text);
+}
+
+.container {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  padding: 1rem;
+}
+
+.theme-bar {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 1rem;
 }
 
 span {
@@ -20,8 +46,8 @@ span {
 
 figure {
   width: 100%;
-  box-shadow: 0 1px 7px rgba(0 0 0 / 50%);
-  
+  box-shadow: 0 1px 7px rgba(0, 0, 0, 0.15);
+
   img {
     width: 100%;
     height: 100%;

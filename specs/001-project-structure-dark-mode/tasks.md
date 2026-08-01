@@ -46,10 +46,10 @@
 
 **Independent Test**: Toggle dark mode on and off and verify the interface updates immediately and persists after refresh.
 
-- [ ] T014 [P] [US2] Add `src/components/DarkModeToggle.tsx` to the app UI and wire it to `useAppearancePreference`
-- [ ] T015 [US2] Update `src/App.tsx` to persist and restore `tmx:appearance` on reload using `useAppearancePreference`
-- [ ] T016 [US2] Update `src/styles/global.scss` or `src/styles/components.module.scss` to ensure the active theme applies consistently across Bootstrap and MUI-based UI elements
-- [ ] T017 [P] [US2] Add `src/components/___tests__/DarkModeToggle.spec.tsx` to cover toggle behavior and persistence of `tmx:appearance`
+- [X] T014 [P] [US2] Add `src/components/DarkModeToggle.tsx` to the app UI and wire it to `useAppearancePreference`
+- [X] T015 [US2] Update `src/App.tsx` to persist and restore `tmx:appearance` on reload using `useAppearancePreference`
+- [X] T016 [US2] Update `src/styles/global.scss` or `src/styles/components.module.scss` to ensure the active theme applies consistently across Bootstrap and MUI-based UI elements
+- [X] T017 [P] [US2] Add `src/components/___tests__/DarkModeToggle.spec.tsx` to cover toggle behavior and persistence of `tmx:appearance`
 
 ---
 

@@ -46,15 +46,18 @@ export const subscribeAppearancePreference = (
   }
 
   window.addEventListener(PREFERENCE_EVENT, handleEvent)
-  window.addEventListener('storage', (event: StorageEvent) => {
+
+  const handleStorage = (event: StorageEvent) => {
     if (event.key === STORAGE_KEY && (event.newValue === 'light' || event.newValue === 'dark')) {
       listener(event.newValue)
     }
-  })
+  }
+
+  window.addEventListener('storage', handleStorage)
 
   return () => {
     window.removeEventListener(PREFERENCE_EVENT, handleEvent)
-    window.removeEventListener('storage', handleEvent as EventListener)
+    window.removeEventListener('storage', handleStorage)
   }
 }
 
