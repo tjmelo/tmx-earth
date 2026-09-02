@@ -142,16 +142,6 @@ input:focus-visible {
   gap: 0.75rem;
 }
 
-.theme-control-group {
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-  padding: 0.25rem 0.28rem 0.25rem 0.4rem;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  background: rgba(255,255,255,0.42);
-}
-
 .theme-toggle-button {
   display: inline-flex;
   align-items: center;

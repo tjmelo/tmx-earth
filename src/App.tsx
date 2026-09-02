@@ -67,7 +67,6 @@ const AppContent = ({ appearance }: { appearance: string }) => {
                             <div className="header-actions">
                                 <div className="theme-control-group">
                                     <DarkModeToggle />
-                                    <button type="button" className="info-button" aria-label="Informações adicionais">i</button>
                                 </div>
                             </div>
                         </header>
