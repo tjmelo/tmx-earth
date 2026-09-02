@@ -25,8 +25,8 @@
 
 👉 **[Preview TMX Earth Live](https://tjmelo.github.io/tmx-earth/)**
 
-![Screen](https://github.com/tjmelo/tmx-earth/blob/main/public/select-country1.png)
-![Screen](https://github.com/tjmelo/tmx-earth/blob/main/public/select-country2.png)
+![Screen](./public/select-country1.png)
+![Screen](./public/select-country2.png)
 
 ---
 
@@ -96,7 +96,7 @@ docker run -p 8080:8080 tjmelo/tmx-earth:1.3.0
 
 ---
 
-## �📦 Installation & Setup
+## 📦 Installation & Setup
 
 ### 1️⃣ Clone the Repository
 
