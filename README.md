@@ -408,7 +408,7 @@ This project is licensed under the **MIT License** — see the [LICENSE](LICENSE
 
 | Info | Detail |
 |---|---|
-| **Version** | 1.3.0 |
+| **Version** | 2.0.0 |
 | **Type** | React SPA |
 | **Data API** | REST Countries v3.1, with a resilience migration to `countries.dev` |
 | **Hosting** | GitHub Pages |
