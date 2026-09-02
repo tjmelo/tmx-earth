@@ -1,20 +1,21 @@
 :host {
   --m3-primary: #6750a4;
   --m3-primary-container: #eaddff;
-  --m3-on-primary: #ffffff;
+  --m3-on-primary: #fff;
   --m3-secondary: #625b71;
   --m3-surface: #fffbfe;
   --m3-surface-variant: #f3edf7;
   --m3-background: #fffbfe;
   --m3-on-surface: #1d1b20;
   --m3-on-surface-variant: #49454f;
-  --m3-outline: rgba(121, 116, 126, 0.5);
-  --m3-shadow: rgba(0, 0, 0, 0.12);
+  --m3-outline: rgb(121 116 126 / 50%);
+  --m3-shadow: rgb(0 0 0 / 12%);
   --text: var(--m3-on-surface);
   --background: var(--m3-background);
   --surface: var(--m3-surface);
   --surface-variant: var(--m3-surface-variant);
   --border: var(--m3-outline);
+
   background: var(--background);
   color: var(--text);
   padding: 1rem;
@@ -33,8 +34,8 @@
   --m3-background: #101418;
   --m3-on-surface: #f4eff4;
   --m3-on-surface-variant: #d0c4d7;
-  --m3-outline: rgba(202, 196, 208, 0.5);
-  --m3-shadow: rgba(0, 0, 0, 0.28);
+  --m3-outline: rgb(202 196 208 / 50%);
+  --m3-shadow: rgb(0 0 0 / 28%);
   --text: var(--m3-on-surface);
   --background: var(--m3-background);
   --surface: var(--m3-surface);
@@ -44,7 +45,7 @@
 
 :host * {
   box-sizing: border-box;
-  font-family: "Roboto", "Noto Sans JP", sans-serif;
+  font-family: Roboto, "Noto Sans JP", sans-serif;
 }
 
 select,
@@ -94,10 +95,10 @@ input:focus-visible {
   padding: 0.875rem 1rem;
   border: 1px solid var(--border);
   border-radius: 0.875rem;
-  background: rgba(255, 255, 255, 0.04);
+  background: rgb(255 255 255 / 4%);
   color: var(--text);
   font-size: 1rem;
-  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.04);
+  box-shadow: inset 0 1px 2px rgb(0 0 0 / 4%);
 }
 
 .search-field-wrap {
@@ -112,7 +113,7 @@ input:focus-visible {
 .country-selector:focus {
   outline: none;
   border-color: #7b4ee7;
-  box-shadow: 0 0 0 3px rgba(123, 78, 231, 0.18);
+  box-shadow: 0 0 0 3px rgb(123 78 231 / 18%);
 }
 
 .select-field-wrap {
