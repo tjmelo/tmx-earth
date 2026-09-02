@@ -1,13 +1,19 @@
 import { ReactNode } from "react"
 
 export type TName = {
-    official: string
-    nativeName: {
+    official?: string
+    nativeName?: {
         [index: string]: {
             common: string
         }
     }
-    common: string
+    common?: string
+}
+
+export interface ICommonName {
+    name: {
+        common: string
+    }
 }
 
 export type TCurrencies = {
@@ -17,28 +23,49 @@ export type TCurrencies = {
     }
 }
 
+export type TLanguageValue = string | {
+    common?: string
+    official?: string
+    name?: string
+}
+
 export type TListData = {
-    coatOfArms: { svg: string }
-    flags: { svg: string }
-    currencies: TCurrencies
-    name: TName
-    capital: string
-    region: string
-    subregion: string
-    languages: Object
-    borders: []
-    population: number,
-    area: number
-    tld: []
+    cca3?: string
+    coatOfArms?: { svg?: string }
+    flags?: { svg?: string }
+    currencies?: TCurrencies | null
+    name: TName & { common: string; official?: string }
+    capital?: string
+    region?: string
+    subregion?: string
+    languages?: Record<string, TLanguageValue> | null
+    borders?: string[] | null
+    population?: number | string
+    area?: number | string
+    tld?: string[] | null
+}
+
+export type AppearancePreference = 'light' | 'dark'
+
+export type Country = {
+    cca3?: string
+    name: TName & { common: string; official?: string }
+    flags?: { svg?: string }
+    population?: number | string
+    area?: number | string
+    region?: string
+    capital?: string | string[]
+    subregion?: string
+    currencies?: TCurrencies | null
+    languages?: Record<string, TLanguageValue> | null
+    borders?: string[] | null
+    tld?: string[] | null
+    coatOfArms?: { svg?: string }
+    official?: string
 }
 
 export interface ITargetEvent {
     value: string
-}
-
-export interface ICommonName {
-    name: { common: string }
-    flags: { svg: string }
 }
 
 export interface ILoading {

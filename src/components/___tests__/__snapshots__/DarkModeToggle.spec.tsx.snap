@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DarkModeToggle Component Should render the toggle button with initial text 1`] = `
+<DocumentFragment>
+  <button
+    aria-label="Switch to dark mode"
+    aria-pressed="false"
+    class="theme-toggle-button"
+    data-testid="dark-mode-toggle"
+    type="button"
+  >
+    <span
+      aria-hidden="true"
+      class="theme-toggle-icon"
+    >
+      ☾
+    </span>
+    <span
+      class="theme-toggle-text"
+    >
+      Modo escuro
+    </span>
+  </button>
+</DocumentFragment>
+`;

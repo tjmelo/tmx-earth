@@ -1,13 +1,17 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+
+interface CountryState {
+    country: string
+}
 
 const countrySlice = createSlice({
     name: 'country',
     initialState: {
-        country: [],
-    },
+        country: 'Angola',
+    } as CountryState,
     reducers: {
-        update: (state, action) => {
-            state.country = action.payload;
+        update: (state, action: PayloadAction<string>) => {
+            state.country = action.payload || '';
         }
     }
 })

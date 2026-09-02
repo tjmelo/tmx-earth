@@ -1,43 +1,84 @@
 import React, { ReactNode, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { AxiosResponse } from 'axios';
 import { AppLoading } from '../../components/Skeleton';
 
 import MountListCountries from '../Mount';
 import Loading from '../Load';
 
-import { ICountry } from '../../interfaces';
+import { ICountry, TListData, Country } from '../../interfaces';
 import { toRequestOne } from '../../service';
 import { DEFAULT } from '../../constants';
 
+interface ICountryResponse {
+    data: Country[] | Country | null | undefined
+}
+
+const getDetails = (data: Country[] | Country | null | undefined): Country[] => {
+    if (!data) {
+        return []
+    }
+
+    return Array.isArray(data) ? data.filter(Boolean) : [data]
+}
+
 export const InfoCountries = () => {
-
-    const country = useSelector((state: ICountry ) => state.country.country);
+    const country = useSelector((state: ICountry) => state.country.country);
     const [info, setInfo] = useState<ReactNode>([]);
+    const [lastLoadedCountry, setLastLoadedCountry] = useState<string | null>(null);
+    const [isLoadingDetails, setIsLoadingDetails] = useState(false);
 
-    const getData = async (fetchData: Promise<AxiosResponse<[], Element>>) => {
+    const getData = async (fetchData: Promise<ICountryResponse>, selectedCountry: string) => {
         try {
             const { data } = await fetchData;
-            setInfo(data?.map((el) => <MountListCountries data={el} key={JSON.stringify(el)}/>))
+            if (selectedCountry !== country) {
+                return;
+            }
+
+            const detailsList = getDetails(data)
+            const details = detailsList.length > 0
+                ? detailsList.map((el, index) => {
+                    const detail = el as Country
+                    return <MountListCountries data={detail as unknown as TListData} key={`${JSON.stringify(el)}-${index}`} />
+                })
+                : <Loading type='warning'>{`No details available for ${selectedCountry}.`}</Loading>
+
+            setInfo(details)
+            setLastLoadedCountry(selectedCountry)
+            setIsLoadingDetails(false)
         } catch (e) {
             console.error(e)
+            if (selectedCountry === country) {
+                if (!lastLoadedCountry) {
+                    setInfo(<Loading type='danger'>Unable to load country details right now.</Loading>)
+                }
+                setIsLoadingDetails(false)
+            }
         }
     }
 
     useEffect(() => {
-        setInfo(<AppLoading />)
-
-        if (!country.length || country === DEFAULT.title){
+        if (!country || country === DEFAULT.title || country === '') {
+            setLastLoadedCountry(null)
+            setIsLoadingDetails(false)
             setInfo(<Loading type='warning'>{DEFAULT.title}</Loading>)
-        } else {
-            const data = toRequestOne(country)
-            getData(data)
+            return
         }
+
+        if (!lastLoadedCountry || lastLoadedCountry === country) {
+            setInfo(<AppLoading />)
+        }
+        setIsLoadingDetails(true)
+
+        const data = toRequestOne(country)
+        getData(data, country)
     }, [country])
 
-    return(
-        <section className="container">
-            { info }
+    return (
+        <section className="container country-details-panel">
+            {isLoadingDetails && lastLoadedCountry && lastLoadedCountry !== country ? (
+                <Loading type='info'>{`Loading details for ${country}...`}</Loading>
+            ) : null}
+            <div className="country-details-content">{info}</div>
         </section>
     )
 }

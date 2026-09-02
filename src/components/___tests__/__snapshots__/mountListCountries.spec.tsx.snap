@@ -3,191 +3,309 @@
 exports[`Should render a Mount List Country 1`] = `
 <DocumentFragment>
   <div
-    class="row my-5"
+    class="country-profile"
   >
     <div
-      class="col-xs-12 d-flex mb-2 flag"
+      class="country-hero"
     >
-      <figure>
+      <div
+        class="flag-frame"
+      >
         <img
           alt="Test data"
           src="SVG data test"
         />
-      </figure>
-      <span
-        class="text-primary name"
-      />
-      <img
-        alt="Test data"
-        height="30"
-        src="SVG data test"
-        width="30"
-      />
-    </div>
-    <div
-      class="col-xs-12 my-3 border-bottom"
-    >
-      <span
-        class="text-secondary"
-      >
-        Native name:
-      </span>
-      <br />
-      <strong
-        class="text-primary"
-      >
-        Common name test
-      </strong>
-      <br />
-    </div>
-    <div
-      class="col-xs-12 my-3 border-bottom"
-    >
-      <span
-        class="text-secondary"
-      >
-        Capital:
-      </span>
-      <br />
-      <strong
-        class="text-primary"
-      >
         <span
-          class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse css-kkcbhd-MuiSkeleton-root"
-          style="width: 100px;"
-        />
-      </strong>
-      <br />
+          class="flag-caption"
+        >
+          Bandeira oficial de Test data
+        </span>
+      </div>
+      <div
+        class="country-overview"
+      >
+        <h2>
+          Test data
+        </h2>
+        <div
+          class="country-badges"
+        >
+          <span>
+            Test data
+          </span>
+          <span
+            class="badge-muted"
+          >
+            País
+          </span>
+        </div>
+        <div
+          class="country-stat-grid"
+        >
+          <div
+            class="stat-card"
+          >
+            <span
+              aria-hidden="true"
+              class="stat-icon people"
+            >
+              <svg
+                aria-hidden="true"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.8"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M16 19v-1a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v1"
+                />
+                <circle
+                  cx="10"
+                  cy="7"
+                  r="3"
+                />
+                <path
+                  d="M20 19v-1a4 4 0 0 0-3-3.87"
+                />
+                <path
+                  d="M16 4.13a4 4 0 0 1 0 7.75"
+                />
+              </svg>
+            </span>
+            <div>
+              <small>
+                POPULAÇÃO
+              </small>
+              <strong>
+                101.010
+              </strong>
+              <em>
+                habitantes
+              </em>
+            </div>
+          </div>
+          <div
+            class="stat-card"
+          >
+            <span
+              aria-hidden="true"
+              class="stat-icon area"
+            >
+              <svg
+                aria-hidden="true"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.8"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M12 3.5 19.5 18.5H4.5L12 3.5Z"
+                />
+                <path
+                  d="M12 7.5v6.5"
+                />
+                <path
+                  d="M9.5 13.5h5"
+                />
+              </svg>
+            </span>
+            <div>
+              <small>
+                ÁREA
+              </small>
+              <strong>
+                999.999
+              </strong>
+              <em>
+                km²
+              </em>
+            </div>
+          </div>
+          <div
+            class="stat-card"
+          >
+            <span
+              aria-hidden="true"
+              class="stat-icon capital"
+            >
+              <svg
+                aria-hidden="true"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.8"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M4 20V8.5L12 4l8 4.5V20"
+                />
+                <path
+                  d="M9 20v-5h6v5"
+                />
+                <path
+                  d="M7 10h10"
+                />
+                <path
+                  d="M7 13h10"
+                />
+              </svg>
+            </span>
+            <div>
+              <small>
+                CAPITAL
+              </small>
+              <strong>
+                Indisponível
+              </strong>
+            </div>
+          </div>
+          <div
+            class="stat-card"
+          >
+            <span
+              aria-hidden="true"
+              class="stat-icon language"
+            >
+              <svg
+                aria-hidden="true"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.8"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M6 18.5V5.5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13l-4-2.5-4 2.5Z"
+                />
+                <path
+                  d="M8.5 8.5h7"
+                />
+                <path
+                  d="M8.5 11.5h7"
+                />
+              </svg>
+            </span>
+            <div>
+              <small>
+                IDIOMA OFICIAL
+              </small>
+              <strong>
+                language test
+              </strong>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <div
-      class="col-xs-12 my-3 border-bottom"
+      class="country-info-grid"
     >
-      <span
-        class="text-secondary"
+      <div
+        class="info-panel"
       >
-        Region:
-      </span>
-      <br />
-      <strong
-        class="text-primary"
+        <div
+          class="panel-title"
+        >
+          INFORMAÇÕES GERAIS
+        </div>
+        <div
+          class="row-list"
+        >
+          <div
+            class="row-item"
+          >
+            <span
+              class="row-label"
+            >
+              CAPITAL
+            </span>
+            <span
+              class="row-value"
+            >
+              Indisponível
+            </span>
+          </div>
+          <div
+            class="row-item"
+          >
+            <span
+              class="row-label"
+            >
+              REGIÃO
+            </span>
+            <span
+              class="row-value"
+            >
+              Unavailable
+            </span>
+          </div>
+          <div
+            class="row-item"
+          >
+            <span
+              class="row-label"
+            >
+              SUB-REGIÃO
+            </span>
+            <span
+              class="row-value"
+            >
+              Unavailable
+            </span>
+          </div>
+          <div
+            class="row-item"
+          >
+            <span
+              class="row-label"
+            >
+              LÍNGUA OFICIAL
+            </span>
+            <span
+              class="row-value"
+            >
+              language test
+            </span>
+          </div>
+          <div
+            class="row-item"
+          >
+            <span
+              class="row-label"
+            >
+              MOEDA
+            </span>
+            <span
+              class="row-value"
+            >
+              Indisponível
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        class="info-panel map-panel"
       >
-        <span
-          class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse css-kkcbhd-MuiSkeleton-root"
-          style="width: 100px;"
-        />
-      </strong>
-      <br />
-    </div>
-    <div
-      class="col-xs-12 my-3 border-bottom"
-    >
-      <span
-        class="text-secondary"
-      >
-        Subregion:
-      </span>
-      <br />
-      <strong
-        class="text-primary"
-      >
-        <span
-          class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse css-kkcbhd-MuiSkeleton-root"
-          style="width: 100px;"
-        />
-      </strong>
-      <br />
-    </div>
-    <div
-      class="col-xs-12 my-3 border-bottom"
-    >
-      <span
-        class="text-secondary"
-      >
-        Languages:
-      </span>
-      <br />
-      <strong
-        class="text-primary"
-      >
-        language test
-      </strong>
-      <br />
-    </div>
-    <div
-      class="col-xs-12 my-3 border-bottom"
-    >
-      <span
-        class="text-secondary"
-      >
-        Currencies:
-      </span>
-      <br />
-      <strong
-        class="text-primary"
-      >
-        <span
-          class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse css-kkcbhd-MuiSkeleton-root"
-          style="width: 100px;"
-        />
-      </strong>
-      <br />
-    </div>
-    <div
-      class="col-xs-12 col-sm-6 col-md-4 col-lg-4 mb-3 border-bottom"
-    >
-      <span
-        class="text-secondary"
-      >
-        Borders: 
-      </span>
-       
-      <br />
-    </div>
-    <div
-      class="col-xs-12 my-3 border-bottom"
-    >
-      <span
-        class="text-secondary"
-      >
-        Poulation:
-      </span>
-      <br />
-      <strong
-        class="text-primary"
-      >
-        101.010
-      </strong>
-      <br />
-    </div>
-    <div
-      class="col-xs-12 my-3 border-bottom"
-    >
-      <span
-        class="text-secondary"
-      >
-        Area:
-      </span>
-      <br />
-      <strong
-        class="text-primary"
-      >
-        999.999
-      </strong>
-      <br />
-    </div>
-    <div
-      class="col-xs-12 my-3 border-bottom"
-    >
-      <span
-        class="text-secondary"
-      >
-        Domain:
-      </span>
-      <br />
-      <strong
-        class="text-primary"
-      />
-      <br />
+        <div
+          class="panel-title"
+        >
+          LOCALIZAÇÃO
+        </div>
+        <div
+          class="map-block"
+        >
+          <div
+            aria-hidden="true"
+            class="map-dot"
+          />
+        </div>
+      </div>
     </div>
   </div>
 </DocumentFragment>

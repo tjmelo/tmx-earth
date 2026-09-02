@@ -20,10 +20,10 @@ const dataTest: TListData = {
     coatOfArms: {
         svg: 'SVG data test',
     },
-    languages: [
-        'language test',
-        'other language test'
-    ],
+    languages: {
+        en: 'language test',
+        fr: 'other language test'
+    },
     population: 101010,
     area: 999999,
     currencies: {},
@@ -39,6 +39,35 @@ test('Should render a Mount List Country', () => {
     const {asFragment} = render(<MountListCountries data={dataTest}/>)
 
     // then
-    expect(screen.getByText('Common name test')).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: 'Test data' })).toBeInTheDocument()
+    const statCards = document.querySelectorAll('.stat-card')
+    expect(statCards).toHaveLength(4)
+
+    const statLabels = Array.from(document.querySelectorAll('.stat-card small')).map((node) => node.textContent?.trim())
+    expect(statLabels).toEqual(expect.arrayContaining(['POPULAÇÃO', 'ÁREA', 'CAPITAL', 'IDIOMA OFICIAL']))
     expect(asFragment()).toMatchSnapshot();
+})
+
+test('Should hide the official language card only when the API payload is missing or empty', () => {
+    const { rerender } = render(
+        <MountListCountries
+            data={{
+                ...dataTest,
+                languages: { eng: { common: 'English', official: 'English' } },
+            }}
+        />
+    )
+
+    expect(screen.getAllByText('English')).toHaveLength(2)
+
+    rerender(
+        <MountListCountries
+            data={{
+                ...dataTest,
+                languages: null,
+            }}
+        />
+    )
+
+    expect(screen.queryByText('IDIOMA OFICIAL')).not.toBeInTheDocument()
 })
