@@ -56,14 +56,14 @@
 
 ### Tests for User Story 2
 
-- [ ] T011 [P] [US2] Add or update request-layer coverage for country lookup by name in src/service/request.spec.ts
-- [ ] T012 [P] [US2] Add or update detail component coverage for successful and no-result lookups in src/components/___tests__/InfoCoutries.spec.tsx
+- [X] T011 [P] [US2] Add or update request-layer coverage for country lookup by name in src/service/request.spec.ts
+- [X] T012 [P] [US2] Add or update detail component coverage for successful and no-result lookups in src/components/___tests__/InfoCoutries.spec.tsx
 
 ### Implementation for User Story 2
 
-- [ ] T013 [US2] Update src/service/request.ts to call /countries/name/{country} for name-based lookups and return a compatible shape for the UI
-- [ ] T014 [US2] Update src/components/Countries/InfoCountries.tsx to render country details, missing-field fallbacks, and no-result feedback without broken states
-- [ ] T015 [US2] Ensure the detail flow preserves the existing visible country fields in src/interfaces/index.ts and the country detail component output
+- [X] T013 [US2] Update src/service/request.ts to call /countries/name/{country} for name-based lookups and return a compatible shape for the UI
+- [X] T014 [US2] Update src/components/Countries/InfoCountries.tsx to render country details, missing-field fallbacks, and no-result feedback without broken states
+- [X] T015 [US2] Ensure the detail flow preserves the existing visible country fields in src/interfaces/index.ts and the country detail component output
 
 **Checkpoint**: User Stories 1 and 2 should both work independently.
 
@@ -77,14 +77,14 @@
 
 ### Tests for User Story 3
 
-- [ ] T016 [P] [US3] Extend request tests in src/service/request.spec.ts to cover failed requests and incomplete provider payloads
-- [ ] T017 [P] [US3] Extend or add UI tests for loading and error states in src/components/___tests__/loading.spec.tsx or the existing country component specs
+- [X] T016 [P] [US3] Extend request tests in src/service/request.spec.ts to cover failed requests and incomplete provider payloads
+- [X] T017 [P] [US3] Extend or add UI tests for loading and error states in src/components/___tests__/loading.spec.tsx or the existing country component specs
 
 ### Implementation for User Story 3
 
-- [ ] T018 [US3] Update src/components/ListCountries.tsx and src/components/Countries/InfoCountries.tsx so network failures and empty lookups render the current friendly loading or error feedback
-- [ ] T019 [US3] Ensure missing values in the migrated API response are displayed as unavailable instead of blank or misleading UI in the country detail component and shared types
-- [ ] T020 [US3] Document the graceful fallback behavior in specs/004-country-data-update/quickstart.md so the migration can be verified manually
+- [X] T018 [US3] Update src/components/ListCountries.tsx and src/components/Countries/InfoCountries.tsx so network failures and empty lookups render the current friendly loading or error feedback
+- [X] T019 [US3] Ensure missing values in the migrated API response are displayed as unavailable instead of blank or misleading UI in the country detail component and shared types
+- [X] T020 [US3] Document the graceful fallback behavior in specs/004-country-data-update/quickstart.md so the migration can be verified manually
 
 **Checkpoint**: All user stories should now be independently functional.
 
@@ -94,9 +94,9 @@
 
 **Purpose**: Validate the migration, update docs, and confirm the app remains stable.
 
-- [ ] T021 [P] Update specs/004-country-data-update/quickstart.md with exact verification steps for list browsing, detail lookup, and failure handling
-- [ ] T022 [P] Update README.md or docs/PROJECT_ANALYSIS.md with a short note about the countries.dev migration and preserved country browsing experience
-- [ ] T023 Run npm test -- --watchAll=false and verify the country migration flow end to end
+- [X] T021 [P] Update specs/004-country-data-update/quickstart.md with exact verification steps for list browsing, detail lookup, and failure handling
+- [X] T022 [P] Update README.md or docs/PROJECT_ANALYSIS.md with a short note about the countries.dev migration and preserved country browsing experience
+- [X] T023 Run npm test -- --watchAll=false and verify the country migration flow end to end
 
 ---
 

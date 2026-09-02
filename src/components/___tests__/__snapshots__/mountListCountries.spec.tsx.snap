@@ -16,7 +16,9 @@ exports[`Should render a Mount List Country 1`] = `
       </figure>
       <span
         class="text-primary name"
-      />
+      >
+        Test data
+      </span>
       <img
         alt="Test data"
         height="30"
@@ -52,10 +54,7 @@ exports[`Should render a Mount List Country 1`] = `
       <strong
         class="text-primary"
       >
-        <span
-          class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse css-kkcbhd-MuiSkeleton-root"
-          style="width: 100px;"
-        />
+        Unavailable
       </strong>
       <br />
     </div>
@@ -71,10 +70,7 @@ exports[`Should render a Mount List Country 1`] = `
       <strong
         class="text-primary"
       >
-        <span
-          class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse css-kkcbhd-MuiSkeleton-root"
-          style="width: 100px;"
-        />
+        Unavailable
       </strong>
       <br />
     </div>
@@ -90,10 +86,7 @@ exports[`Should render a Mount List Country 1`] = `
       <strong
         class="text-primary"
       >
-        <span
-          class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse css-kkcbhd-MuiSkeleton-root"
-          style="width: 100px;"
-        />
+        Unavailable
       </strong>
       <br />
     </div>
@@ -142,6 +135,11 @@ exports[`Should render a Mount List Country 1`] = `
       </span>
        
       <br />
+      <span
+        class="text-secondary"
+      >
+        Unavailable
+      </span>
     </div>
     <div
       class="col-xs-12 my-3 border-bottom"
@@ -149,7 +147,7 @@ exports[`Should render a Mount List Country 1`] = `
       <span
         class="text-secondary"
       >
-        Poulation:
+        Population:
       </span>
       <br />
       <strong
@@ -186,7 +184,9 @@ exports[`Should render a Mount List Country 1`] = `
       <br />
       <strong
         class="text-primary"
-      />
+      >
+        Unavailable
+      </strong>
       <br />
     </div>
   </div>

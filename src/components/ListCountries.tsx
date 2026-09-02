@@ -19,6 +19,19 @@ export const ListCountries = () => {
 
   const countries = alphabeticalOrderData(resolvedCountries as Country[])
 
+  const getDisplayName = (country: Country) => {
+    const common = country?.name?.common
+    const official = country?.name?.official
+    const cca3 = country?.cca3
+
+    if (typeof common === 'string' && common !== 'Unavailable' && common.trim() !== '') return common
+    if (typeof official === 'string' && official !== 'Unavailable' && official.trim() !== '') return official
+    if (typeof cca3 === 'string' && cca3.trim() !== '') return cca3
+    return 'Unavailable'
+  }
+
+  const visibleCountries = countries.filter((c) => getDisplayName(c) !== 'Unavailable')
+
   const selectCountry = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const value = event.target.value
     if (value) {
@@ -41,11 +54,19 @@ export const ListCountries = () => {
           aria-label="select-country"
         >
           <option value="">Select a country</option>
-          {countries.map((country: ICommonName & Country, idx: number) => (
-            <option key={`${country.cca3}-${idx}`} value={country.name.common || country.name.official || 'Unavailable'}>
-              {country.name.common || country.name.official || 'Unavailable'}
-            </option>
-          ))}
+          {visibleCountries.length > 0 ? (
+            visibleCountries.map((country: ICommonName & Country, idx: number) => {
+              const display = String(getDisplayName(country))
+              const value = String(country.cca3 || display)
+              return (
+                <option key={`${value}-${idx}`} value={value}>
+                  {display}
+                </option>
+              )
+            })
+          ) : (
+            <option value="">Unavailable</option>
+          )}
         </select>
       )}
     </div>

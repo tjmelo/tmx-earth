@@ -11,6 +11,9 @@ export const MountListCountries:React.FC<IMountListCountries> = ({ data }: IMoun
   const [nativeName, setNativeName] = useState<string>()
   const [currencies, setCurrencies] = useState<string>()
 
+  const renderName = (countryName?: { common?: string; official?: string }) => countryName?.common || countryName?.official || 'Unavailable'
+  const renderValue = (value: string | number | undefined | null, fallback = 'Unavailable') => value === undefined || value === null || value === '' ? fallback : value
+
   useEffect(
     () => {
       const getNativeKey = (input?: Record<string, unknown> | null) => {
@@ -30,12 +33,12 @@ export const MountListCountries:React.FC<IMountListCountries> = ({ data }: IMoun
       <div
         className={`col-xs-12 d-flex mb-2 ${style.flag}`}
       >
-        { data.flags.svg && data.flags.svg !== 'Unavailable'
+        { data.flags?.svg && data.flags.svg !== 'Unavailable'
           ? (
             <figure>
               <img
                 src={data.flags.svg}
-                alt={data.name.official || data.name.common}
+                alt={renderName(data.name)}
               />
             </figure>
           ) : (
@@ -44,15 +47,15 @@ export const MountListCountries:React.FC<IMountListCountries> = ({ data }: IMoun
 
         }
         <span className={`text-primary ${style.name}`}>
-          {data.name.common}
+          {renderName(data.name)}
         </span>
-        { data.coatOfArms.svg && data.coatOfArms.svg !== 'Unavailable'
+        { data.coatOfArms?.svg && data.coatOfArms.svg !== 'Unavailable'
           ? (
             <img
               width={30}
               height={30}
               src={data.coatOfArms.svg}
-              alt={data.name.official || data.name.common}
+              alt={renderName(data.name)}
             />
           ) : (
             <span className="text-secondary">Unavailable</span>
@@ -68,22 +71,32 @@ export const MountListCountries:React.FC<IMountListCountries> = ({ data }: IMoun
       </SectionList>
 
       <SectionList 
-        data={ data.capital || <Skeleton width={100} /> }>
+        data={ renderValue(data.capital) || <Skeleton width={100} /> }>
         Capital:
       </SectionList>
 
       <SectionList 
-        data={ data.region || <Skeleton width={100} /> }>
+        data={ renderValue(data.region) || <Skeleton width={100} /> }>
         Region:
       </SectionList>
 
       <SectionList 
-        data={ data.subregion || <Skeleton width={100} /> }>
+        data={ renderValue(data.subregion) || <Skeleton width={100} /> }>
         Subregion:
       </SectionList>
 
       <SectionList 
-        data={ data.languages ? Object.values(data.languages)[0] : <Skeleton width={100} /> }>
+        data={ (() => {
+          if (!data.languages) return <Skeleton width={100} />
+          const vals = Object.values(data.languages)
+          const first = vals[0]
+          if (typeof first === 'string') return first
+          if (first && typeof first === 'object') {
+            // attempt common string fields
+            return (first as any).name || (first as any).common || JSON.stringify(first)
+          }
+          return <Skeleton width={100} />
+        })() }>
         Languages:
       </SectionList>
 
@@ -96,7 +109,7 @@ export const MountListCountries:React.FC<IMountListCountries> = ({ data }: IMoun
       <div className="col-xs-12 col-sm-6 col-md-4 col-lg-4 mb-3 border-bottom">
         <span className="text-secondary">Borders: </span>{" "}
         <br />
-        {data.borders ? (
+        {data.borders && data.borders.length > 0 ? (
           data.borders.map((border: string) => (
               <strong
                 key={border}
@@ -106,13 +119,13 @@ export const MountListCountries:React.FC<IMountListCountries> = ({ data }: IMoun
               </strong>
             )
           )) : (
-          <Skeleton width={100} />
+          <span className="text-secondary">Unavailable</span>
         )}
       </div>
 
       <SectionList 
         data={ parseNumber(data.population) || <Skeleton width={100} /> }>
-        Poulation:
+        Population:
       </SectionList>
 
       <SectionList 
@@ -121,7 +134,7 @@ export const MountListCountries:React.FC<IMountListCountries> = ({ data }: IMoun
       </SectionList>
 
       <SectionList 
-        data={ data.tld || <Skeleton width={100} /> }>
+        data={ data.tld && data.tld.length > 0 ? data.tld : 'Unavailable' }>
         Domain:
       </SectionList>
         

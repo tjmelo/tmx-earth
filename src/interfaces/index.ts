@@ -24,35 +24,36 @@ export type TCurrencies = {
 }
 
 export type TListData = {
-    coatOfArms: { svg: string }
-    flags: { svg: string }
-    currencies: TCurrencies
+    cca3?: string
+    coatOfArms?: { svg?: string }
+    flags?: { svg?: string }
+    currencies?: TCurrencies | null
     name: TName & { common: string; official?: string }
-    capital: string
-    region: string
-    subregion: string
-    languages: Record<string, string>
-    borders: string[]
-    population: number | string
-    area: number | string
-    tld: string[]
+    capital?: string
+    region?: string
+    subregion?: string
+    languages?: Record<string, string> | null
+    borders?: string[] | null
+    population?: number | string
+    area?: number | string
+    tld?: string[] | null
 }
 
 export type AppearancePreference = 'light' | 'dark'
 
 export type Country = {
-    cca3: string
+    cca3?: string
     name: TName & { common: string; official?: string }
-    flags: { svg?: string }
+    flags?: { svg?: string }
     population?: number | string
     area?: number | string
     region?: string
     capital?: string | string[]
     subregion?: string
-    currencies?: TCurrencies
-    languages?: Record<string, string>
-    borders?: string[]
-    tld?: string[]
+    currencies?: TCurrencies | null
+    languages?: Record<string, string> | null
+    borders?: string[] | null
+    tld?: string[] | null
     coatOfArms?: { svg?: string }
     official?: string
 }

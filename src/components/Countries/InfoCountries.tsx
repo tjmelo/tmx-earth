@@ -10,7 +10,15 @@ import { toRequestOne } from '../../service';
 import { DEFAULT } from '../../constants';
 
 interface ICountryResponse {
-    data: Country[]
+    data: Country[] | Country | null | undefined
+}
+
+const getDetails = (data: Country[] | Country | null | undefined): Country[] => {
+    if (!data) {
+        return []
+    }
+
+    return Array.isArray(data) ? data.filter(Boolean) : [data]
 }
 
 export const InfoCountries = () => {
@@ -26,8 +34,9 @@ export const InfoCountries = () => {
                 return;
             }
 
-            const details = data.length > 0
-                ? data.map((el, index) => {
+            const detailsList = getDetails(data)
+            const details = detailsList.length > 0
+                ? detailsList.map((el, index) => {
                     const detail = el as Country
                     return <MountListCountries data={detail as unknown as TListData} key={`${JSON.stringify(el)}-${index}`} />
                 })

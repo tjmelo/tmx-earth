@@ -9,8 +9,28 @@ const getStringValue = (value: unknown): string | undefined => {
 
 const getSafeString = (value: unknown) => getStringValue(value) ?? UNAVAILABLE
 
-const getCommonName = (safeName: Partial<Country['name']> | undefined) => {
-    return getSafeString(safeName?.common ?? safeName?.official)
+const getCommonName = (country: Partial<Country> | null | undefined) => {
+    const rawName = country?.name
+
+    if (typeof rawName === 'string') {
+        return getSafeString(rawName)
+    }
+
+    const safeName = getSafeObject(rawName) as Partial<Country['name']>
+
+    const candidates: Array<unknown> = [
+        safeName?.common,
+        safeName?.official,
+        (country as any)?.commonName,
+        (country as any)?.common,
+    ]
+
+    for (const c of candidates) {
+        const v = getStringValue(c)
+        if (v) return v
+    }
+
+    return UNAVAILABLE
 }
 
 const getCapitalValue = (country: Partial<Country> | null | undefined) => {
@@ -27,18 +47,20 @@ const getSafeObject = (value: unknown) => {
 }
 
 export const normalizeCountry = (country: Partial<Country> | null | undefined): Country => {
-    const safeName = getSafeObject(country?.name) as Partial<Country['name']>
-    const commonName = getCommonName(safeName)
+    const commonName = getCommonName(country)
+    const rawName = country?.name
+    const safeName = typeof rawName === 'object' && rawName ? (rawName as Partial<Country['name']>) : ({} as Partial<Country['name']>)
 
     const safeFlags = getSafeObject(country?.flags)
     const safeCoatOfArms = getSafeObject(country?.coatOfArms)
     const safeCapital = getCapitalValue(country)
 
     return {
-        cca3: getSafeString(country?.cca3),
+        // keep cca3 undefined when provider doesn't supply a usable code
+        cca3: getStringValue(country?.cca3),
         name: {
             common: commonName,
-            official: getSafeString(safeName.official),
+            official: getSafeString(safeName.official ?? commonName),
             nativeName: safeName.nativeName || {},
         },
         flags: {

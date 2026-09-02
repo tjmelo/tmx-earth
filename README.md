@@ -16,8 +16,10 @@
 - 🎨 **Responsive Design** - Beautiful UI that works on desktop, tablet, and mobile
 - ⚡ **Fast & Optimized** - Built with React 18 and optimized performance
 - 🧪 **Well Tested** - Comprehensive test coverage with Jest and React Testing Library
-- 📡 **Real-time Data** - Fetches latest country information from REST Countries API
+- 📡 **Real-time Data** - Fetches country information from the migrated countries.dev endpoint, with resilient fallbacks for incomplete or unavailable payloads
 - 🌐 **Live Demo** - Available on GitHub Pages
+
+> The application keeps the browsing and detail experience stable after the country data source migration by normalizing missing provider values and surfacing clear loading/error feedback when data is temporarily unavailable.
 
 ## 🚀 Live Demo
 

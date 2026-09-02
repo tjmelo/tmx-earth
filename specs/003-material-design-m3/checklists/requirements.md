@@ -1,7 +1,7 @@
-# Specification Quality Checklist: Material Design 3 Visual System
+# Specification Quality Checklist: Material Design 3 Library Adoption
 
 **Purpose**: Validate specification completeness and quality before proceeding to planning
-**Created**: 2026-07-11
+**Created**: 2026-09-01
 **Feature**: [spec.md](../spec.md)
 
 ## Content Quality
@@ -31,4 +31,5 @@
 
 ## Notes
 
+- The specification now explicitly requires the official Material Design 3 library as the primary UI system and prohibits a custom styling system.
 - Items marked incomplete require spec updates before `/speckit.clarify` or `/speckit.plan`
