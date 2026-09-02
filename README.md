@@ -266,6 +266,63 @@ For more detailed information, check out our comprehensive documentation:
 
 ---
 
+## 🔗 Resources Used
+
+This project leverages a curated stack of libraries, tools and practices to deliver a fast, accessible and maintainable experience. Key resources and technologies used in this application:
+
+- **React 18** — core UI framework
+- **TypeScript** — static typing across the codebase
+- **Redux** (application store) — state management for countries and UI state
+- **Webpack 5** — bundling and build pipelines (`config/webpack.*.ts`)
+- **SCSS / CSS Modules** — component-level styling and global themes
+- **Material-UI (MUI)** — component library and theming
+- **Axios** — HTTP client for API requests (`src/service/request.ts`)
+- **Jest & React Testing Library** — unit and component tests (`src/**/__tests__`, `request.spec.ts`)
+- **Coverage tooling** — test coverage reports (coverage/)
+- **Docker & Docker Compose** — optional containerized development and deployment (`Dockerfile`, `compose.yml`)
+- **GitHub Pages** — hosting the demo site
+- **Style linting** — `stylelint` script for SCSS checks
+- **Design tokens & theme system** — centralized theme in `src/styles/theme.ts` and `shadowStyles.ts`
+- **Project specs & SDD artifacts** — `specs/` folder containing `spec.md`, `plan.md`, `tasks.md` used during development
+- **Static assets & build output** — `public/` and `build/` folders for deployment artifacts
+
+If you need a precise dependency list, check `package.json` for exact package names and versions.
+
+## 🤖 AIDD & SDD in the development process
+
+This project explicitly embraces both Specification-Driven Development (SDD) and AI-Influenced Design & Development (AIDD) practices to improve predictability, quality and iteration speed.
+
+- **SDD (Specification-Driven Development):**
+	- The `specs/` directory contains formal feature specifications, task breakdowns and research notes used to drive implementation (`spec.md`, `tasks.md`, `plan.md`).
+	- SDD guided acceptance criteria, automated test scope and helped prioritize incremental work (small, testable deliverables).
+	- Using SDD ensured the UI, API normalization and edge-case handling (data fallbacks) were explicitly defined before implementation.
+
+- **AIDD (AI-Driven Design & Development):**
+	- AIDD was used to augment designer and developer workflows: rapid prototyping of visual refresh ideas, generating suggestions for theme tokens and surfacing accessibility recommendations for components.
+	- Practical AIDD touchpoints in the project include research & prototyping phases, iterative improvements to the Material theme, and drafting documentation and commit-level changelogs.
+	- AIDD is treated as an assistant: outputs are reviewed by engineers/designers and integrated when they meet accessibility, performance and consistency checks.
+
+Both SDD and AIDD contributed to a faster feedback loop: SDD provided clear requirements and testability, while AIDD accelerated ideation and repetitive tasks (design tokens, accessibility checks, documentation drafts).
+
+## 🔧 Proposed Improvements
+
+Short actionable ideas to improve the project further:
+
+- **Add E2E tests (Cypress / Playwright)** — cover critical flows: search, select, and detail pages.
+- **Accessibility audit & remediation** — automated axe checks in CI and manual WCAG review.
+- **Internationalization (i18n)** — extract UI strings and add translations for multiple locales.
+- **PWA support & offline cache** — enable basic offline experience for country browsing.
+- **Visual regression tests** — catch unintended style regressions during UI changes.
+- **Centralized design tokens** — formalize tokens (colors/spacing/typography) and publish a small design system package.
+- **Performance budgets & monitoring** — add Lighthouse/GTM monitoring and enforce budgets in CI.
+- **Stricter TypeScript rules** — enable `strict` mode and address type gaps incrementally.
+- **CI pipeline improvements** — parallelize lint/test/build steps and publish coverage reports.
+- **Storybook / component catalog** — isolate components for faster UI development and documentation.
+- **API resilience** — add retry/backoff, caching or local fallback layers to make the app more robust to upstream downtime.
+
+---
+
+
 ## 🤝 Contributing
 
 We welcome contributions! Here's how to get started:
