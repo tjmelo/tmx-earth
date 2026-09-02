@@ -1,406 +1,425 @@
+<div align="center">
+
 # 🌍 TMX Earth
 
-> A beautiful, interactive web application to explore comprehensive information about any country in the world.
+### Explore comprehensive data about any country in the world in a fast, accessible SPA built with specification- and AI-driven engineering.
 
 [![Release](https://img.shields.io/github/release-date/tjmelo/tmx-earth?label=Release&color=brightgreen)](https://github.com/tjmelo/tmx-earth/releases)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![React](https://img.shields.io/badge/React-18.3-blue.svg)](https://react.dev/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-Latest-blue.svg)](https://www.typescriptlang.org/)
+[![React](https://img.shields.io/badge/React-18.3-61DAFB?logo=react&logoColor=black)](https://react.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.4-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Redux Toolkit](https://img.shields.io/badge/State-Redux%20Toolkit-764ABC?logo=redux&logoColor=white)](https://redux-toolkit.js.org/)
+[![Docker](https://img.shields.io/badge/Docker-ready-2496ED?logo=docker&logoColor=white)](#docker)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](#contributing)
+
+**[🔗 View live demo](https://tjmelo.github.io/tmx-earth/)** · **[🐞 Report a bug](https://github.com/tjmelo/tmx-earth/issues)** · **[📖 Full documentation](DOCS.md)**
+
+</div>
 
 ---
 
+<a id="table-of-contents"></a>
+## 📌 Table of Contents
+
+- [🔭 Overview](#overview)
+- [🖼️ Demo](#demo)
+- [✨ Features](#features)
+- [🛠️ Tech Stack](#tech-stack)
+- [🤖 AI-Driven Engineering — SDD & AIDD](#sdd-aidd)
+- [🏗️ Architecture & Project Structure](#architecture)
+- [🚀 Getting Started](#getting-started)
+- [🐳 Docker](#docker)
+- [📜 Available Scripts](#scripts)
+- [🧪 Testing & Quality](#testing)
+- [📦 Build & Deploy](#build-deploy)
+- [📖 Documentation](#documentation)
+- [🗺️ Roadmap](#roadmap)
+- [🤝 Contributing](#contributing)
+- [📄 License](#license)
+- [🙏 Acknowledgments](#acknowledgments)
+- [📊 Project Info](#project-info)
+
+---
+
+<a id="overview"></a>
+## 🔭 Overview
+
+**TMX Earth** is a Single Page Application that lets you search, filter, and view detailed information — population, area, languages, currencies, time zones, flags, and more — about any country in the world.
+
+The project started as a case study built on the **REST Countries API v3.1**, but it evolved into a showcase of **integration resilience**: when the primary data source became unstable, the fetching flow was migrated to the `countries.dev` endpoint, with a normalization layer that handles incomplete payloads and explicit loading/error states — keeping the browsing experience stable even when the external provider fails.
+
+Beyond being a data-lookup app, this repository is a showcase of **how a modern front-end project can be driven by Specification-Driven Development (SDD) and supported by AI agents (AIDD)** — see the dedicated section below.
+
+**[⬆ back to top](#table-of-contents)**
+
+---
+
+<a id="demo"></a>
+## 🖼️ Demo
+
+👉 **[Check out the live preview on GitHub Pages](https://tjmelo.github.io/tmx-earth/)**
+
+<div align="center">
+<img src="./public/select-country1.png" alt="Country list with search and filter" width="45%" />
+<img src="./public/select-country2.png" alt="Detail screen for a selected country" width="45%" />
+</div>
+
+**[⬆ back to top](#table-of-contents)**
+
+---
+
+<a id="features"></a>
 ## ✨ Features
 
-- 🔍 **Search & Filter** - Find any country from the comprehensive list
-- 📊 **Rich Country Data** - Population, area, languages, currencies, time zones, and more
-- 🎨 **Responsive Design** - Beautiful UI that works on desktop, tablet, and mobile
-- ⚡ **Fast & Optimized** - Built with React 18 and optimized performance
-- 🧪 **Well Tested** - Comprehensive test coverage with Jest and React Testing Library
-- 📡 **Real-time Data** - Fetches country information from the migrated countries.dev endpoint, with resilient fallbacks for incomplete or unavailable payloads
-- 🌐 **Live Demo** - Available on GitHub Pages
+| | Feature | What was built |
+|---|---|---|
+| 🔍 | **Search & Filter** | Instantly find any country in the full list |
+| 📊 | **Rich country data** | Population, area, languages, currencies, time zones, flags, and continents |
+| 🎨 | **Responsive design** | Layout adapted for desktop, tablet, and mobile |
+| ⚡ | **Performance** | Optimized build with Webpack 5 and Core Web Vitals monitoring |
+| 🧪 | **Test coverage** | Jest + React Testing Library suite, coverage enabled by default |
+| 📡 | **Data resilience** | Migration to the `countries.dev` endpoint, normalization of incomplete payloads, and clear loading/error feedback |
+| 🌐 | **Continuous deployment** | Automated publishing to GitHub Pages via `gh-pages` |
 
-> The application keeps the browsing and detail experience stable after the country data source migration by normalizing missing provider values and surfacing clear loading/error feedback when data is temporarily unavailable.
-
-## 🚀 Live Demo
-
-👉 **[Preview TMX Earth Live](https://tjmelo.github.io/tmx-earth/)**
-
-![Screen](./public/select-country1.png)
-![Screen](./public/select-country2.png)
+**[⬆ back to top](#table-of-contents)**
 
 ---
 
+<a id="tech-stack"></a>
 ## 🛠️ Tech Stack
 
-| Tool | Purpose |
-|------|---------|
-| **React 18** | UI framework |
-| **TypeScript** | Type-safe development |
-| **Redux** | State management |
-| **Webpack 5** | Module bundler |
-| **SCSS** | Styling |
-| **Material-UI** | Component library |
-| **Axios** | HTTP requests |
-| **Jest & React Testing Library** | Testing |
-| **GitHub Pages** | Deployment |
+The actual stack, pulled directly from the project's `package.json`:
+
+| Layer | Technology | Role in the project |
+|---|---|---|
+| **UI** | React 18.3 + React DOM | Core component library |
+| **Language** | TypeScript 5.4 (`strict` mode enforced via `overrides`) | Static typing across the entire codebase |
+| **Global state** | Redux Toolkit 2 + React Redux 9 | Application state management (`country` feature) |
+| **Remote data** | React Query (TanStack Query v3) + Axios | Fetching, caching, and revalidation of country data |
+| **Styling** | SCSS/Sass, `@emotion/css`, Bootstrap 5 | Theme, design tokens, and responsive grid |
+| **Style quality** | Stylelint (`stylelint-config-standard`) | SCSS linting |
+| **Build** | Webpack 5 (`webpack-cli`, `webpack-dev-server`, `webpack-merge`, `html-webpack-plugin`) | Configuration split across `config/webpack.common|dev|prod.ts` |
+| **Testing** | Jest (via `react-scripts`) + React Testing Library + `jest-dom` | Unit and component tests, coverage by default |
+| **Code linting** | ESLint (`react-app` / `react-app/jest`) | Code standards |
+| **Performance** | `web-vitals` | Real in-browser performance metrics |
+| **Deploy** | `gh-pages` + `serve` | GitHub Pages publishing and local build preview |
+| **Containers** | Docker + Docker Compose | Isolated development and runtime environments |
+
+> 💡 The current visual theme is a custom layer inspired by Material Design (SCSS + `@emotion/css` + Bootstrap). A migration to the **official Material Design 3 library** is already specified — see the concrete example in the SDD section right below.
+
+**[⬆ back to top](#table-of-contents)**
 
 ---
 
-## 📋 Prerequisites
+<a id="sdd-aidd"></a>
+## 🤖 AI-Driven Engineering — SDD & AIDD
 
-Before you begin, ensure you have:
+This is what sets TMX Earth apart: the project isn't just *coded with the help of AI* — it's **structured** for it, combining two complementary practices that are becoming industry standard for teams that work with AI agents on a daily basis.
 
-- **Node.js** (v14 or higher)
-- **npm** or **yarn** package manager
-- **Git** (for cloning the repository)
+### 🧭 SDD — Specification-Driven Development
+
+The repository follows the **Spec Kit** model (evidenced by the `.specify/` folder), where no meaningful feature ships without first going through a formal flow:
+
+```
+Constitution  →  Specification  →  Plan  →  Tasks  →  Implementation  →  Validation
+ (.specify)        (spec.md)      (plan.md)  (tasks.md)     (AI + dev)    (quickstart.md)
+```
+
+What's concretely in place in the project:
+
+- **`.specify/memory/constitution.md`** — an engineering constitution laying out non-negotiable principles for any contribution, human or AI-generated: consistent React architecture, strict typing, scalable component organization, UX/accessibility consistency, and mandatory automated tests before merging.
+- **`specs/<NNN-feature-name>/`** — every meaningful feature gets its own folder with `spec.md` (user stories, acceptance criteria, and a clarifications log), `plan.md`, and `tasks.md`.
+- **A real, in-progress example — `specs/003-material-design-m3`**: a spec currently in *Draft* status that defines the adoption of the official **Material Design 3** library as the single source of visual truth, replacing the custom theme layer. It ships with a `quickstart.md` manual validation checklist — app smoke test, light/dark theme toggle and persistence, keyboard navigation, color contrast, and production build verification — that must pass before merging.
+
+### ⚡ AIDD — AI-Driven Design & Development
+
+While SDD guarantees the *what* and the *why*, AIDD speeds up the *how*:
+
+- **`.cursor/skills/`** — reusable skills packaged for AI agents (Cursor), standardizing how AI should prototype, review, and generate code within the project's conventions.
+- **`docs/.instructions.md`** — an instructions file dedicated to AI agents, referenced in the documentation hub as the entry point for any assistant (Copilot, Cursor, Claude Code, etc.) to understand the project's context before generating code.
+- **Practical use** — rapid prototyping of UI ideas, theme token suggestions, support in accessibility reviews, and drafting documentation/changelogs, always with **mandatory human review** before any output is merged into the code.
+
+> In practice: AI proposes and accelerates; the project's specification and constitution define the boundaries; human review decides what lands on `main`.
+
+**[⬆ back to top](#table-of-contents)**
 
 ---
 
-## � Docker Setup (Optional)
+<a id="architecture"></a>
+## 🏗️ Architecture & Project Structure
 
-### Option 1: Build Locally with Docker Compose
+```
+tmx-earth/
+├── .specify/                 # Constitution, templates, and the SDD flow engine (Spec Kit)
+├── .cursor/skills/           # Reusable AI skills (AIDD)
+├── .github/                  # Repository configuration and automation
+├── specs/                    # Per-feature specifications (spec.md, plan.md, tasks.md)
+├── docs/                     # Strategic documentation (architecture, guidelines, AI agent guide)
+├── config/                   # Webpack configuration (common/dev/prod)
+├── public/                   # Static assets
+├── src/
+│   ├── components/           # React components
+│   │   ├── Countries/        # Country display
+│   │   ├── Load/              # Loading states
+│   │   ├── Mount/             # List mounting logic
+│   │   ├── Skeleton/          # Skeleton loaders
+│   │   └── ListCountries.tsx  # Main list component
+│   ├── feature/country/       # Redux slice for the "country" domain
+│   ├── service/request.ts     # HTTP client (Axios)
+│   ├── store/                 # Redux store configuration
+│   ├── styles/                # Global theme, tokens, and SCSS
+│   ├── utils/                 # Utility functions
+│   ├── interfaces/            # TypeScript types
+│   ├── constants/             # Application constants
+│   └── App.tsx                # Root component
+├── build/                    # Production build output
+├── Dockerfile / compose.yml  # Containerization
+├── DOCS.md                   # Documentation hub
+└── package.json
+```
 
-If you prefer using Docker, simply run:
+**[⬆ back to top](#table-of-contents)**
+
+---
+
+<a id="getting-started"></a>
+## 🚀 Getting Started
+
+### Prerequisites
+
+- **Node.js** 18 LTS or higher (recommended for the current toolchain)
+- **npm** or **yarn**
+- **Git**
+
+### 1️⃣ Clone the repository
 
 ```bash
-# Clone the repository
 git clone https://github.com/tjmelo/tmx-earth.git
 cd tmx-earth
+```
 
-# Build and run with Docker
+### 2️⃣ Install dependencies
+
+```bash
+npm install
+# or
+yarn install
+```
+
+### 3️⃣ Start the development server
+
+```bash
+npm start
+```
+
+The app opens automatically at `http://localhost:8080`.
+
+**[⬆ back to top](#table-of-contents)**
+
+---
+
+<a id="docker"></a>
+## 🐳 Docker
+
+### Option 1 — Build locally with Docker Compose
+
+```bash
+git clone https://github.com/tjmelo/tmx-earth.git
+cd tmx-earth
 docker-compose up --build
 ```
 
-The application will be available at `http://localhost:8080`
-
-### Option 2: Pull from Docker Repository
-
-Run the pre-built image directly from Docker Hub:
+### Option 2 — Use the published Docker Hub image
 
 ```bash
-# Pull the image
 docker pull tjmelo/tmx-earth:latest
-
-# Run the container
 docker run -p 8080:8080 tjmelo/tmx-earth:latest
 ```
 
-Or use a specific version tag:
+Or a specific version:
 
 ```bash
 docker pull tjmelo/tmx-earth:1.3.0
 docker run -p 8080:8080 tjmelo/tmx-earth:1.3.0
 ```
 
-**Note:** Make sure you have Docker and Docker Compose installed on your system.
+The app will be available at `http://localhost:8080`.
+
+**[⬆ back to top](#table-of-contents)**
 
 ---
 
-## 📦 Installation & Setup
+<a id="scripts"></a>
+## 📜 Available Scripts
 
-### 1️⃣ Clone the Repository
+| Script | Command | What it does |
+|---|---|---|
+| Development | `npm start` | Starts the dev server with hot reload (`webpack.dev.ts`) |
+| Tests | `npm test` | Runs the Jest suite with coverage enabled |
+| Style linting | `npm run stylelint` | Validates `.scss` files |
+| Build | `npm run build` | Generates the production build (`webpack.prod.ts`) |
+| Build preview | `npm run serve` | Serves the `build/` folder locally |
+| Deploy | `npm run deploy` | Builds (`predeploy`) and publishes to GitHub Pages via `gh-pages` |
 
-```bash
-git clone https://github.com/tjmelo/tmx-earth.git
-cd tmx-earth
-```
-
-### 2️⃣ Install Dependencies
-
-Using npm:
-```bash
-npm install
-```
-
-Or using yarn:
-```bash
-yarn install
-```
-
-### 3️⃣ Start Development Server
-
-```bash
-npm start
-```
-
-The application will open automatically at `http://localhost:8080`
+**[⬆ back to top](#table-of-contents)**
 
 ---
 
-## 🎯 Available Scripts
-
-### Development
-
-```bash
-# Start development server with hot reload
-npm start
-
-# Run tests with coverage
-npm test
-
-# Check SCSS styling
-npm run stylelint
-```
-
-### Production
+<a id="testing"></a>
+## 🧪 Testing & Quality
 
 ```bash
-# Build for production
-npm run build
-
-# Serve production build locally for testing
-npm run serve
-
-# Deploy to GitHub Pages
-npm run predeploy
-npm run deploy
-```
-
----
-
-## 📁 Project Structure
-
-```
-tmx-earth/
-├── src/
-│   ├── components/          # React components
-│   │   ├── Countries/       # Country display component
-│   │   ├── Load/            # Loading states
-│   │   ├── Mount/           # List mounting logic
-│   │   ├── Skeleton/        # Skeleton loaders
-│   │   └── ListCountries.tsx # Main list component
-│   ├── feature/             # Redux slices
-│   │   └── country/         # Country state management
-│   ├── service/             # API services
-│   │   └── request.ts       # HTTP requests
-│   ├── store/               # Redux store configuration
-│   ├── styles/              # Global & component styles
-│   ├── utils/               # Helper functions
-│   ├── interfaces/          # TypeScript types
-│   ├── constants/           # Application constants
-│   └── App.tsx              # Root component
-├── config/                  # Webpack configuration
-├── public/                  # Static assets
-├── docs/                    # Detailed documentation
-├── build/                   # Production build output
-└── package.json             # Dependencies & scripts
-```
-
----
-
-## 🧪 Testing
-
-### Run All Tests
-
-```bash
+# Runs the full suite with coverage (already enabled by default in the script)
 npm test
 ```
 
-### Test Coverage
+- **Framework:** Jest, run via `react-scripts test`, with `--collect-coverage` already baked into the script.
+- **Component tests:** React Testing Library + `@testing-library/jest-dom`.
+- **Key test files:**
+  - `src/components/__tests__/` — component tests
+  - `src/service/request.spec.ts` — API service tests
+- **Code linting:** ESLint (`react-app`, `react-app/jest`)
+- **Style linting:** Stylelint with `stylelint-config-standard`
 
-Tests are automatically collected and coverage reports are generated:
-
-```bash
-npm test -- --collect-coverage
-```
-
-### Key Test Files
-
-- `src/components/__tests__/` - Component tests
-- `src/service/request.spec.ts` - API service tests
+**[⬆ back to top](#table-of-contents)**
 
 ---
 
-## 🏗️ Building & Deployment
-
-### Build for Production
+<a id="build-deploy"></a>
+## 📦 Build & Deploy
 
 ```bash
+# Production build
 npm run build
-```
 
-This creates an optimized production build in the `build/` directory.
+# Test the build locally
+npm run serve
+# → http://localhost:3000
 
-### Deploy to GitHub Pages
-
-```bash
+# Publish to GitHub Pages
 npm run deploy
 ```
 
-The app will be deployed to `https://tjmelo.github.io/tmx-earth/`
+The build is generated by Webpack 5 into the `build/` folder and published to `https://tjmelo.github.io/tmx-earth/` via the `gh-pages` package, triggered by the `deploy` script (which runs `predeploy` → `build` automatically before publishing).
 
-### Local Testing of Production Build
-
-```bash
-npm run serve
-```
-
-Visit `http://localhost:3000` to test the production build locally.
+**[⬆ back to top](#table-of-contents)**
 
 ---
 
-## 🔧 Configuration Files
-
-| File | Purpose |
-|------|---------|
-| `webpack.common.ts` | Common webpack configuration |
-| `webpack.dev.ts` | Development-specific settings |
-| `webpack.prod.ts` | Production-specific settings |
-| `tsconfig.json` | TypeScript configuration |
-| `compose.yml` | Docker compose setup |
-| `Dockerfile` | Docker image definition |
-
----
-
+<a id="documentation"></a>
 ## 📖 Documentation
 
-For more detailed information, check out our comprehensive documentation:
+The project maintains a dedicated documentation hub, starting at [`DOCS.md`](DOCS.md):
 
 | Document | Purpose |
-|----------|---------|
-| **[Project Analysis](docs/PROJECT_ANALYSIS.md)** | Architecture & design patterns |
-| **[Development Guidelines](docs/DEVELOPMENT_GUIDELINES.md)** | Coding standards & best practices |
-| **[Architecture Patterns](docs/ARCHITECTURE_PATTERNS.md)** | Features & roadmap |
-| **[Quick Reference](docs/QUICK_REFERENCE.md)** | Commands & file locations |
-| **[Documentation Hub](docs/DOCUMENTATION_HUB.md)** | Complete documentation index |
+|---|---|
+| **[docs/INDEX.md](docs/INDEX.md)** | Navigation hub — start here |
+| **[docs/PROJECT_ANALYSIS.md](docs/PROJECT_ANALYSIS.md)** | Architecture and design patterns |
+| **[docs/.instructions.md](docs/.instructions.md)** | Context guide for AI agents |
+| **[docs/DEVELOPMENT_GUIDELINES.md](docs/DEVELOPMENT_GUIDELINES.md)** | Coding standards and best practices |
+| **[docs/ARCHITECTURE_PATTERNS.md](docs/ARCHITECTURE_PATTERNS.md)** | Features and technical roadmap |
+| **[docs/QUICK_REFERENCE.md](docs/QUICK_REFERENCE.md)** | Commands and file locations |
+| **[docs/DOCUMENTATION_HUB.md](docs/DOCUMENTATION_HUB.md)** | Complete documentation index |
+| **[specs/](specs/)** | Source of truth for the SDD flow — specs, plans, and tasks per feature |
+
+**[⬆ back to top](#table-of-contents)**
 
 ---
 
-## 🔗 Resources Used
+<a id="roadmap"></a>
+## 🗺️ Roadmap
 
-This project leverages a curated stack of libraries, tools and practices to deliver a fast, accessible and maintainable experience. Key resources and technologies used in this application:
+- [ ] **E2E tests** (Cypress / Playwright) covering search, selection, and the detail screen
+- [ ] **Accessibility audit** with automated checks (axe) in CI + manual WCAG review
+- [ ] **Internationalization (i18n)** — extract UI strings and support multiple locales
+- [ ] **PWA & offline cache** for offline country browsing
+- [ ] **Visual regression tests** to catch unintended style regressions
+- [ ] **Centralized design tokens** — evolve into a standalone design system package
+- [ ] **Performance budgets** with Lighthouse/CI monitoring
+- [ ] **Full TypeScript `strict` mode** — close remaining type gaps
+- [ ] **CI pipeline** parallelizing lint/test/build and publishing coverage reports
+- [ ] **Storybook** for an isolated component catalog
+- [ ] **API resilience** — retry/backoff and local fallback layers
+- [ ] **Adopt the official Material Design 3 library** — already specified in [`specs/003-material-design-m3`](specs/003-material-design-m3)
 
-- **React 18** — core UI framework
-- **TypeScript** — static typing across the codebase
-- **Redux** (application store) — state management for countries and UI state
-- **Webpack 5** — bundling and build pipelines (`config/webpack.*.ts`)
-- **SCSS / CSS Modules** — component-level styling and global themes
-- **Material-UI (MUI)** — component library and theming
-- **Axios** — HTTP client for API requests (`src/service/request.ts`)
-- **Jest & React Testing Library** — unit and component tests (`src/**/__tests__`, `request.spec.ts`)
-- **Coverage tooling** — test coverage reports (coverage/)
-- **Docker & Docker Compose** — optional containerized development and deployment (`Dockerfile`, `compose.yml`)
-- **GitHub Pages** — hosting the demo site
-- **Style linting** — `stylelint` script for SCSS checks
-- **Design tokens & theme system** — centralized theme in `src/styles/theme.ts` and `shadowStyles.ts`
-- **Project specs & SDD artifacts** — `specs/` folder containing `spec.md`, `plan.md`, `tasks.md` used during development
-- **Static assets & build output** — `public/` and `build/` folders for deployment artifacts
-
-If you need a precise dependency list, check `package.json` for exact package names and versions.
-
-## 🤖 AIDD & SDD in the development process
-
-This project explicitly embraces both Specification-Driven Development (SDD) and AI-Influenced Design & Development (AIDD) practices to improve predictability, quality and iteration speed.
-
-- **SDD (Specification-Driven Development):**
-	- The `specs/` directory contains formal feature specifications, task breakdowns and research notes used to drive implementation (`spec.md`, `tasks.md`, `plan.md`).
-	- SDD guided acceptance criteria, automated test scope and helped prioritize incremental work (small, testable deliverables).
-	- Using SDD ensured the UI, API normalization and edge-case handling (data fallbacks) were explicitly defined before implementation.
-
-- **AIDD (AI-Driven Design & Development):**
-	- AIDD was used to augment designer and developer workflows: rapid prototyping of visual refresh ideas, generating suggestions for theme tokens and surfacing accessibility recommendations for components.
-	- Practical AIDD touchpoints in the project include research & prototyping phases, iterative improvements to the Material theme, and drafting documentation and commit-level changelogs.
-	- AIDD is treated as an assistant: outputs are reviewed by engineers/designers and integrated when they meet accessibility, performance and consistency checks.
-
-Both SDD and AIDD contributed to a faster feedback loop: SDD provided clear requirements and testability, while AIDD accelerated ideation and repetitive tasks (design tokens, accessibility checks, documentation drafts).
-
-## 🔧 Proposed Improvements
-
-Short actionable ideas to improve the project further:
-
-- **Add E2E tests (Cypress / Playwright)** — cover critical flows: search, select, and detail pages.
-- **Accessibility audit & remediation** — automated axe checks in CI and manual WCAG review.
-- **Internationalization (i18n)** — extract UI strings and add translations for multiple locales.
-- **PWA support & offline cache** — enable basic offline experience for country browsing.
-- **Visual regression tests** — catch unintended style regressions during UI changes.
-- **Centralized design tokens** — formalize tokens (colors/spacing/typography) and publish a small design system package.
-- **Performance budgets & monitoring** — add Lighthouse/GTM monitoring and enforce budgets in CI.
-- **Stricter TypeScript rules** — enable `strict` mode and address type gaps incrementally.
-- **CI pipeline improvements** — parallelize lint/test/build steps and publish coverage reports.
-- **Storybook / component catalog** — isolate components for faster UI development and documentation.
-- **API resilience** — add retry/backoff, caching or local fallback layers to make the app more robust to upstream downtime.
+**[⬆ back to top](#table-of-contents)**
 
 ---
 
-
+<a id="contributing"></a>
 ## 🤝 Contributing
 
-We welcome contributions! Here's how to get started:
+Contributions are welcome! The recommended flow follows both market best practices and the project's SDD process:
 
-### Create a Feature Branch
+1. **For larger features**, start by creating or updating the specification under `specs/` before writing code — that's how the project documents intent and acceptance criteria.
+2. **Create a branch** off `main`:
 
-```bash
-git checkout -b feature/your-feature-name
-```
+   ```bash
+   git checkout -b feature/your-feature-name
+   ```
 
-### Follow Commit Guidelines
+3. **Follow Conventional Commits**:
 
-```bash
-# Format: type: description
-git commit -m "feat: add new feature"
-git commit -m "fix: resolve bug"
-git commit -m "docs: update documentation"
-```
+   ```bash
+   git commit -m "feat: add new feature"
+   git commit -m "fix: resolve bug"
+   git commit -m "docs: update documentation"
+   ```
 
-### Push & Create a Pull Request
+4. **Code standards:**
+   - Use TypeScript for all new code
+   - Follow the existing style and the guidelines in `docs/DEVELOPMENT_GUIDELINES.md`
+   - Write tests for new features
+   - Update relevant documentation
+   - Make sure all tests pass before opening a PR
 
-```bash
-git push origin feature/your-feature-name
-```
+5. **Push your branch and open a Pull Request:**
 
-Then create a Pull Request on GitHub with a clear description of your changes.
+   ```bash
+   git push origin feature/your-feature-name
+   ```
 
-### Code Standards
-
-- Use TypeScript for all new code
-- Follow the existing code style
-- Write tests for new features
-- Update documentation as needed
-- Ensure all tests pass before submitting PR
-
----
-
-## 📞 Support & Issues
-
-Found a bug or have a suggestion? 
-
-👉 **[Open an Issue on GitHub](https://github.com/tjmelo/tmx-earth/issues)**
+**[⬆ back to top](#table-of-contents)**
 
 ---
 
+<a id="license"></a>
 ## 📄 License
 
-This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for details.
+
+**[⬆ back to top](#table-of-contents)**
 
 ---
 
+<a id="acknowledgments"></a>
 ## 🙏 Acknowledgments
 
-- 🌐 **[REST Countries API](https://restcountries.com/)** - Country data provider
-- 🎨 **[Material-UI](https://mui.com/)** - Component library
-- ⚛️ **[React](https://react.dev/)** - UI framework
+- 🔁 **`countries.dev`** — data endpoint adopted during the resilience migration
+- ⚛️ **[React](https://react.dev/)** — UI framework
+- 🧭 **[Spec Kit](https://github.com/github/spec-kit)** — the SDD methodology behind the `.specify/` flow
+
+**[⬆ back to top](#table-of-contents)**
 
 ---
 
-## Material Design 3 Visual Refresh
-
-We recently performed a Material Design 3-inspired visual refresh focused on theme tokens, spacing rhythm, and surface treatments. Validation steps and implementation notes are available in the feature docs: [specs/003-material-design-m3/quickstart.md](specs/003-material-design-m3/quickstart.md)
-
+<a id="project-info"></a>
 ## 📊 Project Info
 
 | Info | Detail |
-|------|--------|
+|---|---|
 | **Version** | 1.3.0 |
 | **Type** | React SPA |
-| **API** | REST Countries v3.1 |
+| **Data API** | REST Countries v3.1, with a resilience migration to `countries.dev` |
 | **Hosting** | GitHub Pages |
-| **Deployment** | GitHub Actions |
+| **Publishing** | `gh-pages` (CLI), triggered by `npm run deploy` |
+| **Methodology** | SDD (Spec Kit) + AIDD |
 
 ---
 
 <div align="center">
 
-**🔥 Happy coding! Feel free to contribute and make this project even better!**
+**🔥 Happy coding! Feel free to contribute and make this project even better.**
 
 [⬆ Back to top](#-tmx-earth)
 
