@@ -1,46 +1,56 @@
-import { createTheme, ThemeOptions } from '@mui/material/styles'
-import { AppearancePreference } from '../interfaces'
+export type AppearancePreference = 'light' | 'dark'
 
-const lightThemeOptions: ThemeOptions = {
+const sharedPalette = {
+  primary: { main: '#6750A4', light: '#D0BCFF', dark: '#4F378B', contrastText: '#FFFFFF' },
+  secondary: { main: '#625B71', light: '#E8DEF8', dark: '#49454F', contrastText: '#FFFFFF' },
+  error: { main: '#B3261E', light: '#F9DEDC', dark: '#7A1C1C' },
+  divider: '#CAC4D0',
+  action: {
+    hover: '#F3EDF7',
+    selected: '#E8DEF8',
+  },
+}
+
+const lightThemeOptions = {
   palette: {
     mode: 'light',
-    primary: { main: '#1976d2' },
-    secondary: { main: '#0f62fe' },
+    ...sharedPalette,
     background: {
-      default: '#ffffff',
-      paper: '#f8f9fa',
+      default: '#FFFBFE',
+      paper: '#F7F2FA',
     },
     text: {
-      primary: '#313131',
-      secondary: '#4f4f4f',
+      primary: '#1D1B20',
+      secondary: '#49454F',
     },
   },
-  typography: {
-    fontFamily: '"Noto Sans JP", sans-serif',
-  },
+  shape: { borderRadius: 16 },
 }
 
-const darkThemeOptions: ThemeOptions = {
+const darkThemeOptions = {
   palette: {
     mode: 'dark',
-    primary: { main: '#90caf9' },
-    secondary: { main: '#bb86fc' },
+    primary: { main: '#D0BCFF', light: '#EADDFF', dark: '#4F378B', contrastText: '#381E72' },
+    secondary: { main: '#CCC2DC', light: '#E8DEF8', dark: '#49454F', contrastText: '#1D1B20' },
+    error: { main: '#F2B8B5', light: '#F9DEDC', dark: '#7A1C1C' },
     background: {
-      default: '#121212',
-      paper: '#1f1f1f',
+      default: '#101418',
+      paper: '#1E1F26',
     },
     text: {
-      primary: '#ffffff',
-      secondary: '#cfcfcf',
+      primary: '#F4EFF4',
+      secondary: '#D0C4D7',
+    },
+    divider: '#49454F',
+    action: {
+      hover: '#2A2D38',
+      selected: '#322F3A',
     },
   },
-  typography: {
-    fontFamily: '"Noto Sans JP", sans-serif',
-  },
+  shape: { borderRadius: 16 },
 }
 
-export const getThemeOptions = (preference: AppearancePreference): ThemeOptions =>
+export const getThemeOptions = (preference: AppearancePreference) =>
   preference === 'dark' ? darkThemeOptions : lightThemeOptions
 
-export const createAppTheme = (preference: AppearancePreference) =>
-  createTheme(getThemeOptions(preference))
+export const createAppTheme = (preference: AppearancePreference) => getThemeOptions(preference)

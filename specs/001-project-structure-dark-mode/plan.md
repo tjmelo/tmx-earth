@@ -1,113 +1,101 @@
-# Implementation Plan: [FEATURE]
+# Implementation Plan: Project Structure Refresh and Dark Mode
 
-**Branch**: `[###-feature-name]` | **Date**: [DATE] | **Spec**: [link]
+**Branch**: `001-project-structure-dark-mode` | **Date**: 2026-09-02 | **Spec**: [spec.md](spec.md)
 
-**Input**: Feature specification from `/specs/[###-feature-name]/spec.md`
-
-**Note**: This template is filled in by the `/speckit-plan` command; its definition describes the execution workflow.
+**Input**: Feature specification from `/specs/001-project-structure-dark-mode/spec.md`
 
 ## Summary
 
-[Extract from feature spec: primary requirement + technical approach from research]
+Refresh and reorganize the application structure without breaking the current country browsing and detail experience, while introducing a persisted dark-mode preference. The implementation keeps the existing REST Countries API contract and user workflows stable, centralizes appearance state in a browser-persistent preference layer, and applies a Material UI-based theme across the app.
 
 ## Technical Context
 
-<!--
-  ACTION REQUIRED: Replace the content in this section with the technical details
-  for the project. The structure here is presented in advisory capacity to guide
-  the iteration process.
--->
+**Language/Version**: TypeScript 5.4.5, React 18.3.1, Jest, webpack 5
 
-**Language/Version**: [e.g., Python 3.11, Swift 5.9, Rust 1.75 or NEEDS CLARIFICATION]
+**Primary Dependencies**: Material UI, @emotion/react, @emotion/styled, axios, react-query, bootstrap, webpack, react-scripts-test
 
-**Primary Dependencies**: [e.g., FastAPI, UIKit, LLVM or NEEDS CLARIFICATION]
+**Storage**: Browser `localStorage` for the persisted appearance preference; no server-side persistence required for the MVP
 
-**Storage**: [if applicable, e.g., PostgreSQL, CoreData, files or N/A]
+**Testing**: Jest + React Testing Library for component and request verification; build validation through the app’s existing test and webpack scripts
 
-**Testing**: [e.g., pytest, XCTest, cargo test or NEEDS CLARIFICATION]
+**Target Platform**: Web browser
 
-**Target Platform**: [e.g., Linux server, iOS 15+, WASM or NEEDS CLARIFICATION]
+**Project Type**: Web application
 
-**Project Type**: [e.g., library/cli/web-service/mobile-app/compiler/desktop-app or NEEDS CLARIFICATION]
+**Performance Goals**: Preserve the current fast country list/detail interactions and keep theme toggling immediate with no additional network or heavy re-renders
 
-**Performance Goals**: [domain-specific, e.g., 1000 req/s, 10k lines/sec, 60 fps or NEEDS CLARIFICATION]
+**Constraints**: Do not break the existing country data contract; maintain accessible contrast and focus states; keep the app’s behavior stable while reorganizing structure
 
-**Constraints**: [domain-specific, e.g., <200ms p95, <100MB memory, offline-capable or NEEDS CLARIFICATION]
-
-**Scale/Scope**: [domain-specific, e.g., 10k users, 1M LOC, 50 screens or NEEDS CLARIFICATION]
+**Scale/Scope**: Single frontend app with country browsing, detail view, loading/error states, and a user theme preference across the main screens
 
 ## Constitution Check
 
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
-[Gates determined based on constitution file]
+- The implementation stays within the existing React + TypeScript + Material UI architecture and avoids introducing a custom design system.
+- The country data flow remains explicit and typed through `src/model`, `src/service`, and shared interfaces; API contract stability is preserved.
+- The dark-mode feature is centralized in `src/styles/theme.ts`, `src/hooks/useAppearancePreference.ts`, and `src/utils/appearanceStorage.ts` so behavior is predictable and reusable.
+- Accessibility requirements are respected through an explicit toggle control, focusable UI states, and theme contrast checks during implementation.
+- Automated verification will cover the request layer and theme-persistence behavior, keeping the change aligned with the quality and delivery principles in the constitution.
 
 ## Project Structure
 
 ### Documentation (this feature)
 
 ```text
-specs/[###-feature]/
-├── plan.md              # This file (/speckit-plan command output)
-├── research.md          # Phase 0 output (/speckit-plan command)
-├── data-model.md        # Phase 1 output (/speckit-plan command)
-├── quickstart.md        # Phase 1 output (/speckit-plan command)
-├── contracts/           # Phase 1 output (/speckit-plan command)
-└── tasks.md             # Phase 2 output (/speckit-tasks command - NOT created by /speckit-plan)
+specs/001-project-structure-dark-mode/
+├── plan.md
+├── research.md
+├── data-model.md
+├── quickstart.md
+├── contracts/
+│   └── api-contract.md
+├── checklists/
+└── tasks.md
 ```
 
 ### Source Code (repository root)
-<!--
-  ACTION REQUIRED: Replace the placeholder tree below with the concrete layout
-  for this feature. Delete unused options and expand the chosen structure with
-  real paths (e.g., apps/admin, packages/something). The delivered plan must
-  not include Option labels.
--->
 
 ```text
-# [REMOVE IF UNUSED] Option 1: Single project (DEFAULT)
 src/
-├── models/
-├── services/
-├── cli/
-└── lib/
-
-tests/
-├── contract/
-├── integration/
-└── unit/
-
-# [REMOVE IF UNUSED] Option 2: Web application (when "frontend" + "backend" detected)
-backend/
-├── src/
-│   ├── models/
-│   ├── services/
-│   └── api/
-└── tests/
-
-frontend/
-├── src/
-│   ├── components/
-│   ├── pages/
-│   └── services/
-└── tests/
-
-# [REMOVE IF UNUSED] Option 3: Mobile + API (when "iOS/Android" detected)
-api/
-└── [same as backend above]
-
-ios/ or android/
-└── [platform-specific structure: feature modules, UI flows, platform tests]
+├── App.tsx
+├── bootstrap.tsx
+├── index.ts
+├── components/
+│   ├── Countries/
+│   ├── DarkModeToggle.tsx
+│   ├── ListCountries.tsx
+│   ├── Load/
+│   ├── Mount/
+│   ├── Skeleton/
+│   └── ___tests__/
+├── constants/
+├── feature/
+├── hooks/
+│   └── useAppearancePreference.ts
+├── interfaces/
+│   └── index.ts
+├── model/
+│   └── api.ts
+├── service/
+│   ├── request.ts
+│   └── request.spec.ts
+├── store/
+├── styles/
+│   ├── components.module.scss
+│   ├── global.scss
+│   └── theme.ts
+├── utils/
+│   ├── alphabeticalOrder.ts
+│   ├── appearanceStorage.ts
+│   ├── index.ts
+│   ├── parse-number.ts
+│   └── styleScope.ts
+└── types/
 ```
 
-**Structure Decision**: [Document the selected structure and reference the real
-directories captured above]
+**Structure Decision**: Keep a single frontend application, using the existing feature/service/component structure rather than creating a separate backend or custom design-system package. Theme logic and appearance persistence live in the shared UI layer, while country data access remains in the existing request and model modules.
 
 ## Complexity Tracking
 
-> **Fill ONLY if Constitution Check has violations that must be justified**
-
-| Violation | Why Needed | Simpler Alternative Rejected Because |
-|-----------|------------|-------------------------------------|
-| [e.g., 4th project] | [current need] | [why 3 projects insufficient] |
-| [e.g., Repository pattern] | [specific problem] | [why direct DB access insufficient] |
+No constitution violations are expected for this feature. The scope remains a controlled frontend refresh and theme enhancement within the current project architecture and technology stack.

@@ -57,10 +57,12 @@ export const normalizeCountry = (country: Partial<Country> | null | undefined): 
 
     return {
         // keep cca3 undefined when provider doesn't supply a usable code
-        cca3: getStringValue(country?.cca3),
+            // keep cca3 as a usable string or mark as Unavailable for UI
+        cca3: getSafeString(country?.cca3),
         name: {
             common: commonName,
-            official: getSafeString(safeName.official ?? commonName),
+            // Prefer an explicit official name; if not provided mark as Unavailable
+            official: getStringValue(safeName.official) ?? UNAVAILABLE,
             nativeName: safeName.nativeName || {},
         },
         flags: {
@@ -106,6 +108,9 @@ export const toRequestAll = async () => {
  * @returns Promise with country data from the API
  */
 export const toRequestOne = async (country: string) => {
-    const { data, status } = await api.get(`/countries/name/${country}`)
+    // If caller passed a three-letter country code (CCA3), use the alpha endpoint
+    const isCca3 = typeof country === 'string' && /^[A-Za-z]{3}$/.test(country)
+    const path = isCca3 ? `/countries/alpha/${country}` : `/countries/name/${country}`
+    const { data, status } = await api.get(path)
     return { data: normalizeCountryResponse(data), status }
 }

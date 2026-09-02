@@ -23,6 +23,12 @@ export type TCurrencies = {
     }
 }
 
+export type TLanguageValue = string | {
+    common?: string
+    official?: string
+    name?: string
+}
+
 export type TListData = {
     cca3?: string
     coatOfArms?: { svg?: string }
@@ -32,7 +38,7 @@ export type TListData = {
     capital?: string
     region?: string
     subregion?: string
-    languages?: Record<string, string> | null
+    languages?: Record<string, TLanguageValue> | null
     borders?: string[] | null
     population?: number | string
     area?: number | string
@@ -51,7 +57,7 @@ export type Country = {
     capital?: string | string[]
     subregion?: string
     currencies?: TCurrencies | null
-    languages?: Record<string, string> | null
+    languages?: Record<string, TLanguageValue> | null
     borders?: string[] | null
     tld?: string[] | null
     coatOfArms?: { svg?: string }

@@ -7,10 +7,7 @@ import Loading from "./components/Load"
 import InfoCountries from "./components/Countries"
 import "./styles/global.scss"
 import { createPortal } from "react-dom"
-import { rootStyle } from "./utils/styleScope"
-import { ThemeProvider } from "@mui/material/styles"
-import { CssBaseline } from "@mui/material"
-import { createAppTheme } from "./styles/theme"
+import shadowStyles from './styles/shadowStyles'
 import { useAppearancePreference } from "./hooks/useAppearancePreference"
 import DarkModeToggle from "./components/DarkModeToggle"
 
@@ -37,23 +34,46 @@ const AppContent = ({ appearance }: { appearance: string }) => {
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous" />
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>`
 
-            const styleElement = rootStyle()
-            if (styleElement) {
-                shadowRoot.appendChild(styleElement)
-            }
+            const styleElement = document.createElement('style')
+            styleElement.innerHTML = shadowStyles
+            shadowRoot.appendChild(styleElement)
         }
     }, [])
 
     return (
-        <section id="tmx-earth" ref={sectionRef}>
+        <section
+            id="tmx-earth"
+            ref={sectionRef}
+            style={{
+                backgroundColor: appearance === 'dark' ? '#101418' : '#FFFBFE',
+                color: appearance === 'dark' ? '#F4EFF4' : '#1D1B20',
+                transition: 'background-color 200ms ease, color 200ms ease',
+            }}
+        >
         {shadowRootRef &&
             createPortal(
                 <>
-                    <div className="theme-bar">
-                        <DarkModeToggle />
+                    <div className="app-shell">
+                        <header className="app-header">
+                            <div className="brand-block">
+                                <div className="brand-mark" aria-hidden="true">
+                                    <span className="brand-mark-inner" />
+                                </div>
+                                <div className="brand-copy">
+                                    <h1>InfoPaíses</h1>
+                                    <small>Dados e informações do mundo</small>
+                                </div>
+                            </div>
+                            <div className="header-actions">
+                                <div className="theme-control-group">
+                                    <DarkModeToggle />
+                                    <button type="button" className="info-button" aria-label="Informações adicionais">i</button>
+                                </div>
+                            </div>
+                        </header>
+                        <ListCountries />
+                        <InfoCountries />
                     </div>
-                    <ListCountries />
-                    <InfoCountries />
                 </>,
                 shadowRootRef,
         )}
@@ -63,18 +83,14 @@ const AppContent = ({ appearance }: { appearance: string }) => {
 
 const App = () => {
     const { appearance } = useAppearancePreference()
-    const theme = createAppTheme(appearance)
 
     return (
         <Provider store={store}>
             <QueryClientProvider client={queryClient}>
-                <ThemeProvider theme={theme}>
-                    <CssBaseline />
-                    <Suspense 
-                        fallback={<Loading type="info">Loading app!</Loading>}>
-                        <AppContent appearance={appearance} />
-                    </Suspense>
-                </ThemeProvider>
+                <Suspense 
+                    fallback={<Loading type="info">Loading app!</Loading>}>
+                    <AppContent appearance={appearance} />
+                </Suspense>
             </QueryClientProvider>
         </Provider>
     )

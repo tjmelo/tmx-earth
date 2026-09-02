@@ -77,6 +77,21 @@ describe('Shoul render component List Coutries', () => {
         expect(screen.getByRole('option', { name: 'Chile' })).toBeInTheDocument()
     })
 
+    it('Should default to Angola while the app loads the country details', async () => {
+        mockedToRequestAll.mockResolvedValue({
+            data: [
+                { name: { common: 'Angola' }, cca3: 'AGO', flags: { svg: 'flag' } },
+                { name: { common: 'Brazil' }, cca3: 'BRA', flags: { svg: 'flag' } },
+            ],
+            status: 200,
+        } as never)
+
+        renderComponent()
+
+        const select = await waitFor(() => screen.getByLabelText('select-country'))
+        expect((select as HTMLSelectElement).value).toBe('Angola')
+    })
+
     const mockDataTest = [{
         name: { common: 'Test common A' },
         flag: 'test flag'

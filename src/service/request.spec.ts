@@ -76,8 +76,8 @@ describe('country request handling', () => {
         const result = await toRequestOne('Canada')
 
         expect(mockedApiGet).toHaveBeenCalledWith('/countries/name/Canada')
-        expect(result.data[0].name.common).toBe('Canada')
-        expect(result.data[0].flags.svg).toBe('Unavailable')
-        expect(result.data[0].cca3).toBe('Unavailable')
+        expect(result.data[0]?.name.common).toBe('Canada')
+        expect(result.data[0]?.flags?.svg).toBe('Unavailable')
+        expect(result.data[0]?.cca3).toBe('Unavailable')
     })
 })

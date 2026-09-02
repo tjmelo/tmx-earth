@@ -3,12 +3,18 @@
 exports[`Should render the information of coutries Should render without a default value 1`] = `
 <DocumentFragment>
   <section
-    class="container"
+    class="container country-details-panel"
   >
     <div
-      class="alert alert-warning my-2"
+      class="country-details-content"
     >
-      Type the name of a country
+      <div
+        aria-live="polite"
+        role="status"
+        style="margin: 1rem 0px; border-radius: 8px; padding: 0.75rem 1rem; background: rgb(255, 247, 230); color: rgb(180, 83, 9); font-weight: 600; border: 1px solid transparent;"
+      >
+        Type the name of a country
+      </div>
     </div>
   </section>
 </DocumentFragment>

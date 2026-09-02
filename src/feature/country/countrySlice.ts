@@ -7,7 +7,7 @@ interface CountryState {
 const countrySlice = createSlice({
     name: 'country',
     initialState: {
-        country: '',
+        country: 'Angola',
     } as CountryState,
     reducers: {
         update: (state, action: PayloadAction<string>) => {

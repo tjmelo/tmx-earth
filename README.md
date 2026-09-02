@@ -325,6 +325,10 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 ---
 
+## Material Design 3 Visual Refresh
+
+We recently performed a Material Design 3-inspired visual refresh focused on theme tokens, spacing rhythm, and surface treatments. Validation steps and implementation notes are available in the feature docs: [specs/003-material-design-m3/quickstart.md](specs/003-material-design-m3/quickstart.md)
+
 ## 📊 Project Info
 
 | Info | Detail |

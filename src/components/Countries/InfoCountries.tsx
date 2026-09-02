@@ -74,11 +74,11 @@ export const InfoCountries = () => {
     }, [country])
 
     return (
-        <section className="container">
+        <section className="container country-details-panel">
             {isLoadingDetails && lastLoadedCountry && lastLoadedCountry !== country ? (
                 <Loading type='info'>{`Loading details for ${country}...`}</Loading>
             ) : null}
-            {info}
+            <div className="country-details-content">{info}</div>
         </section>
     )
 }
